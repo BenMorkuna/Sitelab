@@ -12,25 +12,30 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center gap-3 group">
-            {/* Logo Icon */}
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#13aff0]/30">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 9l6 6" />
+            {/* Modern Geometric Logo */}
+            <div className="relative w-10 h-10">
+              {/* Outer ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-[#13aff0] group-hover:border-[#43ffae] transition-colors duration-300"></div>
+              {/* Inner shapes - abstract S form */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none">
+                  <path d="M7 8C7 8 9 6 12 6C15 6 17 8 17 10C17 12 15 13 12 13C9 13 7 14 7 16C7 18 9 20 12 20C15 20 17 18 17 18"
+                    stroke="url(#gradient)"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"/>
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#13aff0" />
+                      <stop offset="100%" stopColor="#43ffae" />
+                    </linearGradient>
+                  </defs>
                 </svg>
               </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#43ffae] rounded-full animate-pulse"></div>
             </div>
-            {/* Logo Text */}
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold text-white group-hover:text-[#13aff0] transition-colors leading-none">
-                SiteLab
-              </span>
-              <span className="text-[10px] text-[#43ffae] font-semibold tracking-wider uppercase leading-none mt-0.5">
-                GEO • AI Search
-              </span>
-            </div>
+            {/* Clean Wordmark */}
+            <span className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#13aff0] group-hover:to-[#43ffae] transition-all duration-300">
+              SiteLab
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -97,20 +102,14 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link href="/portfolio" className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
-              Portfolio
-            </Link>
             <Link href="/about" className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
               About
             </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
-              Contact
-            </Link>
             <Link
               href="/contact"
-              className="bg-[#13aff0] text-white px-6 py-2 rounded-full hover:bg-[#43ffae] transition-all hover:scale-105 font-medium shadow-lg shadow-[#13aff0]/20"
+              className="bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all hover:scale-105 font-semibold"
             >
-              Free GEO Audit
+              Get a Quote
             </Link>
           </div>
 
@@ -187,13 +186,6 @@ export default function Navigation() {
             </div>
 
             <Link
-              href="/portfolio"
-              className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Portfolio
-            </Link>
-            <Link
               href="/about"
               className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
               onClick={() => setIsOpen(false)}
@@ -202,17 +194,10 @@ export default function Navigation() {
             </Link>
             <Link
               href="/contact"
-              className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
+              className="block text-center bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-3 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all font-semibold mt-4"
               onClick={() => setIsOpen(false)}
             >
-              Contact
-            </Link>
-            <Link
-              href="/contact"
-              className="block w-full text-center bg-[#13aff0] text-white px-6 py-3 rounded-full hover:bg-[#43ffae] transition-all font-medium shadow-lg shadow-[#13aff0]/20 mt-4"
-              onClick={() => setIsOpen(false)}
-            >
-              Free GEO Audit
+              Get a Quote
             </Link>
           </div>
         )}
