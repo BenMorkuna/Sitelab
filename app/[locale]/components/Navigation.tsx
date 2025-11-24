@@ -2,16 +2,19 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const t = useTranslations('navigation');
+  const locale = useLocale();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1b1b1b]/95 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href={`/${locale}`} className="flex items-center gap-3 group">
             {/* Modern Geometric Logo */}
             <div className="relative w-10 h-10">
               {/* Outer ring */}
@@ -39,9 +42,9 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
-              Home
+          <div className="hidden md:flex items-center space-x-6">
+            <Link href={`/${locale}`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
+              {t('home')}
             </Link>
 
             {/* Services Dropdown */}
@@ -51,7 +54,7 @@ export default function Navigation() {
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium flex items-center gap-1">
-                Services
+                {t('services')}
                 <svg className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -62,7 +65,7 @@ export default function Navigation() {
                 <div className="absolute top-full left-0 pt-2 w-56">
                   <div className="bg-[#1b1b1b] border border-gray-800 rounded-xl shadow-2xl shadow-black/50 py-2 animate-fadeIn">
                   <Link
-                    href="/geo"
+                    href={`/${locale}/geo`}
                     className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
                   >
                     <div className="flex items-center gap-3">
@@ -71,7 +74,7 @@ export default function Navigation() {
                     </div>
                   </Link>
                   <Link
-                    href="/seo"
+                    href={`/${locale}/seo`}
                     className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
                   >
                     <div className="flex items-center gap-3">
@@ -80,7 +83,7 @@ export default function Navigation() {
                     </div>
                   </Link>
                   <Link
-                    href="/web-development"
+                    href={`/${locale}/web-development`}
                     className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
                   >
                     <div className="flex items-center gap-3">
@@ -89,7 +92,7 @@ export default function Navigation() {
                     </div>
                   </Link>
                   <Link
-                    href="/ecommerce"
+                    href={`/${locale}/ecommerce`}
                     className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
                   >
                     <div className="flex items-center gap-3">
@@ -102,14 +105,14 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link href="/about" className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
-              About
+            <Link href={`/${locale}/about`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
+              {t('about')}
             </Link>
             <Link
-              href="/contact"
+              href={`/${locale}/contact`}
               className="bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all hover:scale-105 font-semibold"
             >
-              Get a Quote
+              {t('contact')}
             </Link>
           </div>
 
@@ -133,11 +136,11 @@ export default function Navigation() {
         {isOpen && (
           <div className="md:hidden py-4 space-y-3 animate-fadeIn border-t border-gray-800 mt-2">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
-              Home
+              {t('home')}
             </Link>
 
             {/* Mobile Services Submenu */}
@@ -146,7 +149,7 @@ export default function Navigation() {
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className="w-full flex items-center justify-between py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
               >
-                Services
+                {t('services')}
                 <svg className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -154,28 +157,28 @@ export default function Navigation() {
               {isServicesOpen && (
                 <div className="pl-4 space-y-2 mt-2">
                   <Link
-                    href="/geo"
+                    href={`/${locale}/geo`}
                     className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
                     onClick={() => setIsOpen(false)}
                   >
                     → GEO Optimization
                   </Link>
                   <Link
-                    href="/seo"
+                    href={`/${locale}/seo`}
                     className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
                     onClick={() => setIsOpen(false)}
                   >
                     → SEO
                   </Link>
                   <Link
-                    href="/web-development"
+                    href={`/${locale}/web-development`}
                     className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
                     onClick={() => setIsOpen(false)}
                   >
                     → Web Development
                   </Link>
                   <Link
-                    href="/ecommerce"
+                    href={`/${locale}/ecommerce`}
                     className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
                     onClick={() => setIsOpen(false)}
                   >
@@ -186,18 +189,19 @@ export default function Navigation() {
             </div>
 
             <Link
-              href="/about"
+              href={`/${locale}/about`}
               className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
-              About
+              {t('about')}
             </Link>
+
             <Link
-              href="/contact"
+              href={`/${locale}/contact`}
               className="block text-center bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-3 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all font-semibold mt-4"
               onClick={() => setIsOpen(false)}
             >
-              Get a Quote
+              {t('contact')}
             </Link>
           </div>
         )}

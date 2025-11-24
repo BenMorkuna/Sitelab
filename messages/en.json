@@ -1,0 +1,100 @@
+{
+  "home": {
+    "hero": {
+      "badge": "🤖 AI Search Optimization Specialist",
+      "title": {
+        "line1": "GEO & AI Search Expert",
+        "line2": "Get Found in AI Results,",
+        "line3": "Not Just Google"
+      },
+      "description": "Helping brands appear in ChatGPT, Perplexity, Claude, and Gemini AI-driven search results, with SEO + professional website development to match.",
+      "cta": {
+        "primary": "Get Free GEO Audit",
+        "secondary": "Explore GEO Services"
+      },
+      "platforms": {
+        "chatgpt": "ChatGPT",
+        "perplexity": "Perplexity",
+        "claude": "Claude",
+        "gemini": "Gemini",
+        "aiEngines": "AI Search Engines"
+      },
+      "stats": {
+        "aiFocused": {
+          "title": "AI-First",
+          "description": "Future-Proof Strategy"
+        },
+        "engines": {
+          "title": "4 Engines",
+          "description": "Multi-AI Visibility"
+        },
+        "early": {
+          "title": "Early",
+          "description": "Competitive Edge"
+        },
+        "expert": {
+          "title": "Expert",
+          "description": "GEO Specialist"
+        }
+      }
+    },
+    "whyGeo": {
+      "title": "Why GEO Matters Now",
+      "subtitle": "The future of search is happening today. AI is becoming the primary way people find information.",
+      "reasons": {
+        "aiModels": {
+          "title": "AI Models Are Becoming Primary Search Engines",
+          "description": "Millions now use ChatGPT, Perplexity, and other AI tools instead of Google. If your brand isn't optimized for AI results, you're invisible to a massive audience."
+        },
+        "visibility": {
+          "title": "Brands Need Visibility in AI-Generated Answers",
+          "description": "When AI tools recommend products or services, being mentioned means conversions. GEO ensures your brand appears in those critical AI-generated recommendations."
+        },
+        "edge": {
+          "title": "GEO Gives Early Adopters a Competitive Edge",
+          "description": "Most businesses haven't discovered GEO yet. Being an early adopter means dominating AI search while competitors are still figuring out what GEO even is."
+        }
+      }
+    },
+    "services": {
+      "title": "Complete Digital Visibility Solutions",
+      "subtitle": "From cutting-edge GEO to proven SEO and professional web development",
+      "geo": {
+        "badge": "PRIMARY",
+        "title": "GEO Services",
+        "description": "Get discovered in ChatGPT, Perplexity, Claude, and Gemini. Future-proof your brand with AI search optimization.",
+        "cta": "Explore GEO →"
+      },
+      "seo": {
+        "title": "SEO Services",
+        "description": "Traditional search optimization that delivers stability. Rank on Google while preparing for the AI future.",
+        "cta": "View SEO Packages →"
+      },
+      "webDev": {
+        "title": "Web Development",
+        "description": "Professional websites built with GEO + SEO optimization from day one. E-commerce, landing pages, and more.",
+        "cta": "Explore Web Dev →"
+      }
+    },
+    "cta": {
+      "title": "Ready to Dominate AI Search?",
+      "subtitle": "Get a free GEO audit and discover how to appear in ChatGPT, Perplexity, and other AI search results.",
+      "primaryButton": "Get Free GEO Audit",
+      "secondaryButton": "Learn About GEO",
+      "disclaimer": "No obligations • See your AI visibility opportunities"
+    },
+    "footer": {
+      "company": "SiteLab",
+      "tagline": "GEO • AI Search • SEO • Web Development",
+      "copyright": "© 2025 SiteLab. All rights reserved.",
+      "slogan": "Get Found in AI Results • Future-Proof Your Brand"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  }
+}

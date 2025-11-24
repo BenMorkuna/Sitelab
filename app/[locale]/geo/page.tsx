@@ -1,7 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import { useLocale } from 'next-intl';
 
 export default function GEOServices() {
+  const locale = useLocale();
+
   return (
     <div className="min-h-screen bg-[#171717]">
       <Navigation />
@@ -128,7 +134,7 @@ export default function GEOServices() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="block text-center py-4 bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white rounded-full font-bold hover:scale-105 transition-all">
+              <Link href={`/${locale}/contact`} className="block text-center py-4 bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white rounded-full font-bold hover:scale-105 transition-all">
                 Get Started
               </Link>
             </div>
@@ -163,7 +169,7 @@ export default function GEOServices() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="block text-center py-4 bg-gradient-to-r from-[#43ffae] to-[#13aff0] text-white rounded-full font-bold hover:scale-105 transition-all">
+              <Link href={`/${locale}/contact`} className="block text-center py-4 bg-gradient-to-r from-[#43ffae] to-[#13aff0] text-white rounded-full font-bold hover:scale-105 transition-all">
                 Get Started
               </Link>
             </div>
@@ -196,7 +202,7 @@ export default function GEOServices() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="block text-center py-4 bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white rounded-full font-bold hover:scale-105 transition-all">
+              <Link href={`/${locale}/contact`} className="block text-center py-4 bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white rounded-full font-bold hover:scale-105 transition-all">
                 Get Started
               </Link>
             </div>
@@ -340,7 +346,7 @@ export default function GEOServices() {
             Get a free GEO visibility audit and discover how your brand currently performs in AI-generated responses.
           </p>
           <Link
-            href="/contact"
+            href={`/${locale}/contact`}
             className="inline-block bg-white text-[#13aff0] px-12 py-5 rounded-full text-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 hover:shadow-2xl"
           >
             Get Your Free GEO Audit
@@ -350,13 +356,7 @@ export default function GEOServices() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0f0f0f] text-gray-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-xl font-bold text-white mb-2">SiteLab</p>
-          <p className="text-sm text-[#43ffae] mb-1">GEO • AI Search • SEO • Web Development</p>
-          <p className="text-sm">&copy; 2025 SiteLab. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

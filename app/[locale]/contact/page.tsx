@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -79,8 +80,8 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-white mb-1">Email Us</h3>
-                    <a href="mailto:hello@sitelab.lt" className="text-[#13aff0] hover:text-[#43ffae] transition-colors">
-                      hello@sitelab.lt
+                    <a href="mailto:info@sitelab.lt" className="text-[#13aff0] hover:text-[#43ffae] transition-colors">
+                      info@sitelab.lt
                     </a>
                   </div>
                 </div>
@@ -93,8 +94,8 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-white mb-1">Call Us</h3>
-                    <a href="tel:+37012345678" className="text-[#13aff0] hover:text-[#43ffae] transition-colors">
-                      +370 123 45678
+                    <a href="tel:+37060267098" className="text-[#13aff0] hover:text-[#43ffae] transition-colors">
+                      +370 602 67098
                     </a>
                   </div>
                 </div>
@@ -300,14 +301,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0f0f0f] text-gray-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-xl font-bold text-white mb-2">SiteLab</p>
-          <p className="text-sm">&copy; 2025 SiteLab. All rights reserved.</p>
-          <p className="text-sm mt-2">Professional Web Development & E-Commerce Solutions</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

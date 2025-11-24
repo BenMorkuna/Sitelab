@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 export default function Portfolio() {
   return (
@@ -74,13 +75,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="bg-[#0f0f0f] text-gray-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-xl font-bold text-white mb-2">SiteLab</p>
-          <p className="text-sm text-[#43ffae] mb-1">GEO • AI Search • SEO • Web Development</p>
-          <p className="text-sm">&copy; 2025 SiteLab. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

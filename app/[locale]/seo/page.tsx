@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import { useLocale } from 'next-intl';
 
 export default function SEOServices() {
+  const locale = useLocale();
   const services = [
     {
       title: 'Local SEO',
@@ -175,7 +180,7 @@ export default function SEOServices() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/contact" className={`block text-center py-4 bg-gradient-to-r ${service.gradient} text-white rounded-full font-bold hover:scale-105 transition-all`}>
+                <Link href={`/${locale}/contact`} className={`block text-center py-4 bg-gradient-to-r ${service.gradient} text-white rounded-full font-bold hover:scale-105 transition-all`}>
                   Get Started
                 </Link>
               </div>
@@ -209,7 +214,7 @@ export default function SEOServices() {
               </div>
             </div>
             <Link
-              href="/contact"
+              href={`/${locale}/contact`}
               className="inline-block bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-12 py-5 rounded-full text-lg font-bold hover:scale-105 transition-all hover:shadow-2xl"
             >
               Get SEO + GEO Bundle
@@ -228,7 +233,7 @@ export default function SEOServices() {
             Get a free SEO audit and discover how to rank higher on Google and beyond.
           </p>
           <Link
-            href="/contact"
+            href={`/${locale}/contact`}
             className="inline-block bg-white text-[#13aff0] px-12 py-5 rounded-full text-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 hover:shadow-2xl"
           >
             Get Free SEO Audit
@@ -237,13 +242,7 @@ export default function SEOServices() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0f0f0f] text-gray-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-xl font-bold text-white mb-2">SiteLab</p>
-          <p className="text-sm text-[#43ffae] mb-1">GEO • AI Search • SEO • Web Development</p>
-          <p className="text-sm">&copy; 2025 SiteLab. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
