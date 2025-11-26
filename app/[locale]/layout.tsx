@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '../../i18n';
+import ChatWidget from './components/ChatWidget';
 
 const redHatDisplay = Red_Hat_Display({
   variable: "--font-heading",
@@ -52,6 +53,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages}>
           {children}
+          <ChatWidget />
         </NextIntlClientProvider>
       </body>
     </html>
