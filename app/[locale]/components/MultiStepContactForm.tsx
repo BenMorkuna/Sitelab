@@ -62,11 +62,28 @@ export default function MultiStepContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error(data.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error sending your message. Please try again or email us directly at info@sitelab.lt');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const goBack = () => {
