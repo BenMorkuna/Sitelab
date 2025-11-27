@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'SiteLab Website <onboarding@resend.dev>', // You'll change this after domain verification
+      from: 'SiteLab Contact Form <noreply@sitelab.lt>',
       to: ['info@istelab.lt'],
       replyTo: email,
       subject: `🎯 New Contact Form: ${name} - ${projectTypeDisplay}`,
