@@ -80,7 +80,7 @@ export default function MultiStepContactForm() {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error sending your message. Please try again or email us directly at info@sitelab.lt');
+      alert('There was an error sending your message. Please try again or email us directly at info@istelab.lt');
     } finally {
       setIsSubmitting(false);
     }

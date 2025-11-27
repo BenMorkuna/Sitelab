@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Email service is not configured. Please contact us directly at info@sitelab.lt'
+          message: 'Email service is not configured. Please contact us directly at info@istelab.lt'
         },
         { status: 503 }
       );
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'SiteLab Website <onboarding@resend.dev>', // You'll change this after domain verification
-      to: ['info@sitelab.lt'],
+      to: ['info@istelab.lt'],
       replyTo: email,
       subject: `🎯 New Contact Form: ${name} - ${projectTypeDisplay}`,
       html: `
@@ -262,7 +262,7 @@ Submitted: ${new Date().toLocaleString()}
       return NextResponse.json(
         {
           success: false,
-          message: 'There was an error sending your message. Please try again or email us directly at info@sitelab.lt'
+          message: 'There was an error sending your message. Please try again or email us directly at info@istelab.lt'
         },
         { status: 500 }
       );
@@ -279,7 +279,7 @@ Submitted: ${new Date().toLocaleString()}
     return NextResponse.json(
       {
         success: false,
-        message: 'There was an error sending your message. Please try again or email us directly at info@sitelab.lt'
+        message: 'There was an error sending your message. Please try again or email us directly at info@istelab.lt'
       },
       { status: 500 }
     );
