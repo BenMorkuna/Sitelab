@@ -96,5 +96,12 @@
     "services": "Services",
     "portfolio": "Portfolio",
     "contact": "Contact"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "Looks like this page got lost in the AI search results. The page you're looking for doesn't exist or has been moved.",
+    "homeButton": "Back to Home",
+    "contactButton": "Contact Us"
   }
 }
