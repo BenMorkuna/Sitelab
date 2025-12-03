@@ -108,6 +108,9 @@ export default function Navigation() {
             <Link href={`/${locale}/about`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
               {t('about')}
             </Link>
+            <Link href={`/${locale}/blog`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
+              Blog
+            </Link>
             <Link
               href={`/${locale}/contact`}
               className="bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all hover:scale-105 font-semibold"
@@ -194,6 +197,14 @@ export default function Navigation() {
               onClick={() => setIsOpen(false)}
             >
               {t('about')}
+            </Link>
+
+            <Link
+              href={`/${locale}/blog`}
+              className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
             </Link>
 
             <Link
