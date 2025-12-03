@@ -6,6 +6,8 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '../../i18n';
 import ChatWidget from './components/ChatWidget';
+import StructuredData from './components/StructuredData';
+import { organizationSchema } from './lib/schemas';
 
 const redHatDisplay = Red_Hat_Display({
   variable: "--font-heading",
@@ -54,6 +56,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <StructuredData data={organizationSchema} />
+      </head>
       <body
         className={`${redHatDisplay.variable} ${openSans.variable} antialiased`}
       >

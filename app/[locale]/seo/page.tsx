@@ -4,9 +4,12 @@ import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { useLocale } from 'next-intl';
+import StructuredData from '../components/StructuredData';
+import { seoServiceSchema } from '../lib/schemas';
 
 export default function SEOServices() {
   const locale = useLocale();
+
   const services = [
     {
       title: 'Local SEO',
@@ -54,6 +57,7 @@ export default function SEOServices() {
 
   return (
     <div className="min-h-screen bg-[#171717]">
+      <StructuredData data={seoServiceSchema(locale)} />
       <Navigation />
 
       {/* Hero Section */}

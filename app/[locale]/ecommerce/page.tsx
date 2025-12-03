@@ -4,11 +4,14 @@ import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { useLocale } from 'next-intl';
+import StructuredData from '../components/StructuredData';
+import { ecommerceServiceSchema } from '../lib/schemas';
 
 export default function Ecommerce() {
   const locale = useLocale();
   return (
     <div className="min-h-screen bg-[#171717]">
+      <StructuredData data={ecommerceServiceSchema(locale)} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">

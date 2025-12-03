@@ -3,13 +3,17 @@
 import Link from 'next/link';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import {useTranslations} from 'next-intl';
+import {useTranslations, useLocale} from 'next-intl';
+import StructuredData from './components/StructuredData';
+import { websiteSchema } from './lib/schemas';
 
 export default function Home() {
   const t = useTranslations('home');
+  const locale = useLocale();
 
   return (
     <div className="min-h-screen bg-[#171717]">
+      <StructuredData data={websiteSchema(locale)} />
       <Navigation />
 
       {/* Hero Section - GEO Focused */}

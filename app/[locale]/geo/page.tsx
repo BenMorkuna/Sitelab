@@ -4,12 +4,15 @@ import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { useLocale } from 'next-intl';
+import StructuredData from '../components/StructuredData';
+import { geoServiceSchema } from '../lib/schemas';
 
 export default function GEOServices() {
   const locale = useLocale();
 
   return (
     <div className="min-h-screen bg-[#171717]">
+      <StructuredData data={geoServiceSchema(locale)} />
       <Navigation />
 
       {/* Hero Section */}
