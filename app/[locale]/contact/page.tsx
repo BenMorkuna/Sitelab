@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import MultiStepContactForm from '../components/MultiStepContactForm';
@@ -33,8 +34,8 @@ export default function Contact() {
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-white mb-6">Let's Talk</h2>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                We're here to answer any questions you may have about our services.
-                Fill out the form and we'll get back to you within 24 hours.
+                Tell us about your <Link href="/en/geo" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">GEO</Link>, <Link href="/en/seo" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">SEO</Link>, <Link href="/en/web-development" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">web development</Link>, or <Link href="/en/ecommerce" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">e-commerce</Link> project.
+                Fill out the form and we'll get back to you within 24 hours with a tailored solution.
               </p>
 
               <div className="space-y-6">

@@ -119,7 +119,7 @@ export default function SEOServices() {
                 GEO: The Future
               </h3>
               <p className="text-gray-400 mb-4">
-                GEO positions you for AI search, which is rapidly becoming how people find information and make decisions.
+                <Link href={`/${locale}/geo`} className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">AI search optimization (GEO)</Link> positions you for AI search, which is rapidly becoming how people find information and make decisions. Learn more about our GEO services.
               </p>
               <ul className="space-y-2 text-gray-400">
                 <li className="flex items-center gap-2">

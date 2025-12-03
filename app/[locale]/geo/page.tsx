@@ -289,6 +289,90 @@ export default function GEOServices() {
         </div>
       </section>
 
+      {/* GEO + SEO + Web Development */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717] border-y border-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">GEO + SEO + Web Development</span>
+            <span className="block mt-2 text-white">Complete Search Dominance</span>
+          </h2>
+          <p className="text-xl text-gray-400 text-center mb-16 max-w-3xl mx-auto">
+            Maximize your visibility by combining all three services for unbeatable results
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Link href={`/${locale}/seo`} className="group bg-[#1b1b1b] p-8 rounded-2xl border-2 border-gray-800 hover:border-[#13aff0] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#13aff0]/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#13aff0] transition-colors">SEO Services</h3>
+              <p className="text-gray-400 mb-4">
+                Traditional search engine optimization ensures you rank on Google and Bing. The stable foundation for consistent organic traffic.
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold group-hover:translate-x-2 transition-transform">
+                Learn More About SEO
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Link>
+
+            <Link href={`/${locale}/web-development`} className="group bg-[#1b1b1b] p-8 rounded-2xl border-2 border-gray-800 hover:border-[#43ffae] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#43ffae]/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#43ffae] to-[#13aff0] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#43ffae] transition-colors">Web Development</h3>
+              <p className="text-gray-400 mb-4">
+                Build your website with GEO and SEO optimization built-in from day one. The perfect foundation for all search strategies.
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold group-hover:translate-x-2 transition-transform">
+                Explore Web Development
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Link>
+
+            <div className="bg-gradient-to-br from-[#1b1b1b] to-[#171717] p-8 rounded-2xl border-2 border-[#13aff0]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">GEO (You Are Here)</h3>
+              <p className="text-gray-400 mb-4">
+                Future-proof AI search optimization. Appear in ChatGPT, Perplexity, Claude, and Gemini results for maximum visibility.
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Current Page
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-[#13aff0]/10 to-[#43ffae]/10 p-10 rounded-2xl border border-[#13aff0]/30 text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              💡 Why Combine All Three?
+            </h3>
+            <p className="text-lg text-gray-300 mb-6 max-w-4xl mx-auto">
+              <span className="text-[#43ffae] font-semibold">Web Development</span> creates the foundation. <span className="text-[#13aff0] font-semibold">SEO</span> drives today's traffic. <span className="text-[#43ffae] font-semibold">GEO</span> captures tomorrow's audience. Together, they create unstoppable search presence across all platforms—traditional and AI-powered.
+            </p>
+            <Link
+              href={`/${locale}/contact`}
+              className="inline-block bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-10 py-4 rounded-full text-lg font-bold hover:scale-105 transition-all hover:shadow-2xl"
+            >
+              Get Complete Package Quote
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Results/Case Studies */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1b1b1b] border-y border-gray-800">
         <div className="max-w-7xl mx-auto">

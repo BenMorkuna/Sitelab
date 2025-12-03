@@ -105,6 +105,89 @@ export default function About() {
         </div>
       </section>
 
+      {/* Our Core Services */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717]">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Core Services</span>
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link href="/en/geo" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#13aff0] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#13aff0]/20">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#13aff0] transition-colors">GEO Optimization</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                AI search visibility for ChatGPT, Perplexity, Claude, and Gemini
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                Learn More →
+              </div>
+            </Link>
+
+            <Link href="/en/seo" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#43ffae] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#43ffae]/20">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#43ffae] to-[#13aff0] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#43ffae] transition-colors">SEO Services</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                Traditional search engine optimization for Google and Bing rankings
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                Learn More →
+              </div>
+            </Link>
+
+            <Link href="/en/web-development" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#13aff0] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#13aff0]/20">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#13aff0] transition-colors">Web Development</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                Custom websites and applications built with GEO + SEO optimization
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                Learn More →
+              </div>
+            </Link>
+
+            <Link href="/en/ecommerce" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#43ffae] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#43ffae]/20">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#43ffae] to-[#13aff0] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#43ffae] transition-colors">E-Commerce Development</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                Online stores optimized for conversions and search visibility
+              </p>
+              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                Learn More →
+              </div>
+            </Link>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-lg text-gray-400 mb-6">
+              All services work together to create complete digital presence and search dominance
+            </p>
+            <Link
+              href="/en/contact"
+              className="inline-block bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-10 py-4 rounded-full text-lg font-bold hover:scale-105 transition-all hover:shadow-2xl"
+            >
+              Discuss Your Project
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717]">
         <div className="max-w-7xl mx-auto">
