@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
+import '../globals.css';
 
 const redHatDisplay = Red_Hat_Display({
   variable: "--font-heading",

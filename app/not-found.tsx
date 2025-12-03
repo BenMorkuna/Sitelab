@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Red_Hat_Display, Open_Sans } from "next/font/google";
+import './globals.css';
 
 const redHatDisplay = Red_Hat_Display({
   variable: "--font-heading",
