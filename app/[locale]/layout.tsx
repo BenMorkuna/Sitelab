@@ -19,10 +19,16 @@ const openSans = Open_Sans({
   weight: ["400", "600"],
 });
 
-export const metadata: Metadata = {
-  title: "SiteLab - GEO & AI Search Optimization Expert | Get Found in ChatGPT & AI Results",
-  description: "Get discovered in ChatGPT, Perplexity, Claude, and Gemini AI search results. Future-proof your visibility with expert GEO optimization + professional SEO & web development.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "SiteLab - GEO & AI Search Optimization Expert | Get Found in ChatGPT & AI Results",
+    description: "Get discovered in ChatGPT, Perplexity, Claude, and Gemini AI search results. Future-proof your visibility with expert GEO optimization + professional SEO & web development.",
+    alternates: {
+      canonical: `https://www.sitelab.lt/${locale}`,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
