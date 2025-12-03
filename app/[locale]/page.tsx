@@ -40,7 +40,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl sm:text-2xl text-gray-300 mb-6 leading-relaxed animate-fadeIn max-w-4xl mx-auto">
-              {t('hero.description')} Our <Link href="/en/geo" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">AI search optimization agency</Link> combines cutting-edge <Link href="/en/geo" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">GEO optimization services</Link>, proven <Link href="/en/seo" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">SEO services</Link>, and expert <Link href="/en/web-development" className="text-[#43ffae] hover:text-[#13aff0] transition-colors font-semibold underline decoration-[#43ffae]/30 hover:decoration-[#13aff0]">web development services</Link> to ensure complete search dominance.
+              {t('hero.description')}
             </p>
 
             {/* AI Platforms */}
