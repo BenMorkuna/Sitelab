@@ -51,6 +51,15 @@ export default function SEOvsGEOBlogPost() {
             </div>
           </header>
 
+          {/* Featured Image */}
+          <div className="mb-12 rounded-2xl overflow-hidden">
+            <img
+              src="/blog/seo-vs-geo.jpg"
+              alt="SEO vs GEO comparison"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
           {/* Article Content */}
           <div className="prose prose-invert prose-lg max-w-none">
             <div className="space-y-8 text-gray-300 leading-relaxed">
