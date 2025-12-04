@@ -11,17 +11,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     const {
-      projectType,
-      timeline,
-      budget,
+      service,
       name,
       email,
+      phone,
       company,
       message,
     } = body;
 
     // Validate required fields
-    if (!name || !email || !projectType) {
+    if (!name || !email || !phone || !service) {
       return NextResponse.json(
         {
           success: false,
@@ -43,36 +42,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Format project type for display
-    const projectTypeLabels: Record<string, string> = {
+    // Format service type for display
+    const serviceLabels: Record<string, string> = {
       'geo': 'GEO Services',
       'seo': 'SEO Services',
       'webdev': 'Web Development',
-      'ecommerce': 'E-Commerce'
+      'ecommerce': 'E-commerce Development'
     };
 
-    const timelineLabels: Record<string, string> = {
-      'urgent': 'ASAP (1-2 weeks)',
-      'normal': 'Standard (3-4 weeks)',
-      'flexible': 'Flexible (1-2 months)'
-    };
-
-    const budgetLabels: Record<string, string> = {
-      'small': 'Starter (€500 - €1,500)',
-      'medium': 'Professional (€1,500 - €5,000)',
-      'large': 'Enterprise (€5,000+)'
-    };
-
-    const projectTypeDisplay = projectTypeLabels[projectType] || projectType;
-    const timelineDisplay = timelineLabels[timeline] || timeline;
-    const budgetDisplay = budgetLabels[budget] || budget;
+    const serviceDisplay = serviceLabels[service] || service;
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'SiteLab Contact Form <noreply@sitelab.lt>',
       to: ['info@sitelab.lt'],
       replyTo: email,
-      subject: `🎯 New Contact Form: ${name} - ${projectTypeDisplay}`,
+      subject: `🎯 New Contact Form: ${name} - ${serviceDisplay}`,
       html: `
 <!DOCTYPE html>
 <html>
@@ -165,18 +150,10 @@ export async function POST(request: NextRequest) {
 
   <div class="content">
     <div class="section">
-      <h2>📋 Project Details</h2>
+      <h2>📋 Service Requested</h2>
       <div class="field">
-        <div class="field-label">Project Type</div>
-        <div class="field-value">${projectTypeDisplay} <span class="badge">PRIMARY</span></div>
-      </div>
-      <div class="field">
-        <div class="field-label">Timeline</div>
-        <div class="field-value">${timelineDisplay}</div>
-      </div>
-      <div class="field">
-        <div class="field-label">Budget</div>
-        <div class="field-value">${budgetDisplay}</div>
+        <div class="field-label">Service</div>
+        <div class="field-value">${serviceDisplay} <span class="badge">PRIMARY</span></div>
       </div>
     </div>
 
@@ -189,6 +166,10 @@ export async function POST(request: NextRequest) {
       <div class="field">
         <div class="field-label">Email</div>
         <div class="field-value"><a href="mailto:${email}" style="color: #13aff0; text-decoration: none;">${email}</a></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Phone</div>
+        <div class="field-value"><a href="tel:${phone}" style="color: #13aff0; text-decoration: none;">${phone}</a></div>
       </div>
       ${company ? `
       <div class="field">
@@ -230,12 +211,10 @@ export async function POST(request: NextRequest) {
 New Contact Form Submission from SiteLab Website
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PROJECT DETAILS
+SERVICE REQUESTED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Project Type: ${projectTypeDisplay}
-Timeline: ${timelineDisplay}
-Budget: ${budgetDisplay}
+Service: ${serviceDisplay}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CONTACT INFORMATION
@@ -243,6 +222,7 @@ CONTACT INFORMATION
 
 Name: ${name}
 Email: ${email}
+Phone: ${phone}
 Company: ${company || 'Not provided'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
