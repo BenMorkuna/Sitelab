@@ -43,10 +43,6 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href={`/${locale}`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
-              {t('home')}
-            </Link>
-
             {/* Services Dropdown */}
             <div
               className="relative"
@@ -138,14 +134,6 @@ export default function Navigation() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-3 animate-fadeIn border-t border-gray-800 mt-2">
-            <Link
-              href={`/${locale}`}
-              className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              {t('home')}
-            </Link>
-
             {/* Mobile Services Submenu */}
             <div>
               <button
