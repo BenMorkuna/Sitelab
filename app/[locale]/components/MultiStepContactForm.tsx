@@ -9,6 +9,7 @@ interface FormData {
   phone: string;
   company: string;
   message: string;
+  website: string; // Honeypot field
 }
 
 export default function MultiStepContactForm() {
@@ -19,6 +20,7 @@ export default function MultiStepContactForm() {
     phone: '',
     company: '',
     message: '',
+    website: '', // Honeypot field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -32,6 +34,18 @@ export default function MultiStepContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot check - if filled, it's a bot
+    if (formData.website) {
+      console.log('Bot detected via honeypot');
+      // Silently reject without showing error to avoid detection
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      }, 1000);
+      return;
+    }
 
     if (!formData.service) {
       alert('Please select a service');
@@ -86,6 +100,7 @@ export default function MultiStepContactForm() {
               phone: '',
               company: '',
               message: '',
+              website: '',
             });
           }}
           className="text-[#13aff0] hover:text-[#43ffae] transition-colors font-medium"
@@ -178,6 +193,20 @@ export default function MultiStepContactForm() {
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-[#171717] border border-gray-700 text-white focus:border-[#13aff0] focus:ring-2 focus:ring-[#13aff0]/20 transition-all outline-none"
                 placeholder="Your Company (optional)"
+              />
+            </div>
+
+            {/* Honeypot field - hidden from users but visible to bots */}
+            <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }} aria-hidden="true" tabIndex={-1}>
+              <label htmlFor="website">Website (do not fill)</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                value={formData.website}
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
               />
             </div>
 

@@ -6,8 +6,102 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+const MAX_REQUESTS_PER_WINDOW = 3;
+
+// In-memory store for rate limiting (use Redis in production for better scaling)
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+
+// Clean up old entries every hour
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, data] of rateLimitStore.entries()) {
+    if (now > data.resetTime) {
+      rateLimitStore.delete(ip);
+    }
+  }
+}, 60 * 60 * 1000);
+
+function checkRateLimit(ip: string): { allowed: boolean; resetTime?: number } {
+  const now = Date.now();
+  const record = rateLimitStore.get(ip);
+
+  if (!record || now > record.resetTime) {
+    // No record or expired - allow and create new record
+    rateLimitStore.set(ip, {
+      count: 1,
+      resetTime: now + RATE_LIMIT_WINDOW,
+    });
+    return { allowed: true };
+  }
+
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    // Rate limit exceeded
+    return { allowed: false, resetTime: record.resetTime };
+  }
+
+  // Increment count
+  record.count++;
+  return { allowed: true };
+}
+
+// Validation functions
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 254;
+}
+
+function isValidPhone(phone: string): boolean {
+  // Allow international format with optional + and spaces/dashes
+  const phoneRegex = /^\+?[\d\s\-()]{8,20}$/;
+  return phoneRegex.test(phone);
+}
+
+function containsSuspiciousContent(text: string): boolean {
+  // Check for common spam patterns
+  const suspiciousPatterns = [
+    /<script/i,
+    /javascript:/i,
+    /onclick/i,
+    /onerror/i,
+    /<iframe/i,
+    /viagra|cialis|casino|lottery/i,
+    /\[url=/i,
+    /\[link=/i,
+  ];
+
+  return suspiciousPatterns.some(pattern => pattern.test(text));
+}
+
+function sanitizeInput(input: string): string {
+  // Basic sanitization - remove HTML tags and trim
+  return input.replace(/<[^>]*>/g, '').trim();
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Get client IP for rate limiting
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Check rate limit
+    const rateLimitCheck = checkRateLimit(ip);
+    if (!rateLimitCheck.allowed) {
+      const resetTime = rateLimitCheck.resetTime || Date.now();
+      const minutesRemaining = Math.ceil((resetTime - Date.now()) / 60000);
+
+      console.log(`Rate limit exceeded for IP: ${ip}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: `Too many requests. Please try again in ${minutesRemaining} minute${minutesRemaining !== 1 ? 's' : ''}.`
+        },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
 
     const {
@@ -17,7 +111,20 @@ export async function POST(request: NextRequest) {
       phone,
       company,
       message,
+      website, // Honeypot field
     } = body;
+
+    // Honeypot check - if filled, it's a bot
+    if (website) {
+      console.log(`Bot detected via honeypot from IP: ${ip}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Invalid submission detected'
+        },
+        { status: 400 }
+      );
+    }
 
     // Validate required fields
     if (!name || !email || !phone || !service) {
@@ -29,6 +136,48 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Validate email format
+    if (!isValidEmail(email)) {
+      console.log(`Invalid email format from IP: ${ip}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Please provide a valid email address'
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate phone format
+    if (!isValidPhone(phone)) {
+      console.log(`Invalid phone format from IP: ${ip}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Please provide a valid phone number'
+        },
+        { status: 400 }
+      );
+    }
+
+    // Check for suspicious content in all text fields
+    const textFields = [name, email, phone, company, message].filter(Boolean).join(' ');
+    if (containsSuspiciousContent(textFields)) {
+      console.log(`Suspicious content detected from IP: ${ip}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Invalid content detected in submission'
+        },
+        { status: 400 }
+      );
+    }
+
+    // Sanitize all inputs
+    const sanitizedName = sanitizeInput(name);
+    const sanitizedCompany = company ? sanitizeInput(company) : '';
+    const sanitizedMessage = message ? sanitizeInput(message) : '';
 
     // Check if Resend is configured
     if (!resend) {
@@ -57,7 +206,7 @@ export async function POST(request: NextRequest) {
       from: 'SiteLab Contact Form <noreply@sitelab.lt>',
       to: ['info@sitelab.lt'],
       replyTo: email,
-      subject: `🎯 New Contact Form: ${name} - ${serviceDisplay}`,
+      subject: `🎯 New Contact Form: ${sanitizedName} - ${serviceDisplay}`,
       html: `
 <!DOCTYPE html>
 <html>
@@ -161,7 +310,7 @@ export async function POST(request: NextRequest) {
       <h2>👤 Contact Information</h2>
       <div class="field">
         <div class="field-label">Name</div>
-        <div class="field-value">${name}</div>
+        <div class="field-value">${sanitizedName}</div>
       </div>
       <div class="field">
         <div class="field-label">Email</div>
@@ -171,18 +320,18 @@ export async function POST(request: NextRequest) {
         <div class="field-label">Phone</div>
         <div class="field-value"><a href="tel:${phone}" style="color: #13aff0; text-decoration: none;">${phone}</a></div>
       </div>
-      ${company ? `
+      ${sanitizedCompany ? `
       <div class="field">
         <div class="field-label">Company</div>
-        <div class="field-value">${company}</div>
+        <div class="field-value">${sanitizedCompany}</div>
       </div>
       ` : ''}
     </div>
 
-    ${message ? `
+    ${sanitizedMessage ? `
     <div class="section">
       <h2>💬 Message</h2>
-      <div class="message-box">${message}</div>
+      <div class="message-box">${sanitizedMessage}</div>
     </div>
     ` : ''}
 
@@ -202,7 +351,7 @@ export async function POST(request: NextRequest) {
 
   <div class="footer">
     <p style="margin: 0;">This email was sent from the SiteLab contact form</p>
-    <p style="margin: 5px 0 0 0; opacity: 0.7;">Reply directly to this email to respond to ${name}</p>
+    <p style="margin: 5px 0 0 0; opacity: 0.7;">Reply directly to this email to respond to ${sanitizedName}</p>
   </div>
 </body>
 </html>
@@ -220,16 +369,16 @@ Service: ${serviceDisplay}
 CONTACT INFORMATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Name: ${name}
+Name: ${sanitizedName}
 Email: ${email}
 Phone: ${phone}
-Company: ${company || 'Not provided'}
+Company: ${sanitizedCompany || 'Not provided'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 MESSAGE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-${message || 'No additional message provided'}
+${sanitizedMessage || 'No additional message provided'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
