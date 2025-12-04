@@ -79,6 +79,42 @@ function sanitizeInput(input: string): string {
   return input.replace(/<[^>]*>/g, '').trim();
 }
 
+async function verifyRecaptcha(token: string): Promise<{ success: boolean; score?: number; error?: string }> {
+  if (!token) {
+    return { success: false, error: 'No reCAPTCHA token provided' };
+  }
+
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    console.warn('RECAPTCHA_SECRET_KEY not configured - skipping verification');
+    return { success: true, score: 1.0 }; // Allow if not configured
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      return { success: false, error: 'reCAPTCHA verification failed' };
+    }
+
+    // reCAPTCHA v3 returns a score between 0.0 and 1.0
+    // 1.0 is very likely a good interaction, 0.0 is very likely a bot
+    const score = data.score || 0;
+
+    return { success: true, score };
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return { success: false, error: 'reCAPTCHA verification failed' };
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Get client IP for rate limiting
@@ -112,7 +148,34 @@ export async function POST(request: NextRequest) {
       company,
       message,
       website, // Honeypot field
+      recaptchaToken,
     } = body;
+
+    // Verify reCAPTCHA
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+    if (!recaptchaResult.success) {
+      console.log(`reCAPTCHA verification failed for IP: ${ip} - ${recaptchaResult.error}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Security verification failed. Please try again.'
+        },
+        { status: 400 }
+      );
+    }
+
+    // Check reCAPTCHA score (threshold: 0.5)
+    // Score < 0.5 is likely a bot
+    if (recaptchaResult.score !== undefined && recaptchaResult.score < 0.5) {
+      console.log(`Low reCAPTCHA score for IP: ${ip} - Score: ${recaptchaResult.score}`);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Security verification failed. Please try again or contact us directly at info@sitelab.lt'
+        },
+        { status: 400 }
+      );
+    }
 
     // Honeypot check - if filled, it's a bot
     if (website) {

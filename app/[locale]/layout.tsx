@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '../../i18n';
 import ChatWidget from './components/ChatWidget';
+import CookieConsent from './components/CookieConsent';
 import StructuredData from './components/StructuredData';
 import { organizationSchema } from './lib/schemas';
 
@@ -65,6 +66,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
           <ChatWidget />
+          <CookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>

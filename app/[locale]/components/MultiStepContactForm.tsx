@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface FormData {
   service: string;
@@ -10,6 +10,16 @@ interface FormData {
   company: string;
   message: string;
   website: string; // Honeypot field
+}
+
+// Declare grecaptcha type
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
 }
 
 export default function MultiStepContactForm() {
@@ -24,6 +34,21 @@ export default function MultiStepContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
+  // Load reCAPTCHA script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => setRecaptchaLoaded(true);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const services = [
     { value: 'geo', label: 'GEO Services' },
@@ -55,12 +80,31 @@ export default function MultiStepContactForm() {
     setIsSubmitting(true);
 
     try {
+      // Get reCAPTCHA token
+      let recaptchaToken = '';
+      if (recaptchaLoaded && typeof window !== 'undefined' && window.grecaptcha) {
+        try {
+          await window.grecaptcha.ready(async () => {
+            recaptchaToken = await window.grecaptcha.execute(
+              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
+              { action: 'contact_form' }
+            );
+          });
+        } catch (error) {
+          console.error('reCAPTCHA error:', error);
+          // Continue without reCAPTCHA if it fails
+        }
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken,
+        }),
       });
 
       const data = await response.json();
