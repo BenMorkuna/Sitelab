@@ -27,9 +27,10 @@ export default function Blog() {
       title: 'SEO vs GEO: What\'s the Difference?',
       excerpt: 'Understand the key differences between traditional SEO and modern GEO strategies. Learn when to use each approach for maximum search visibility.',
       category: 'SEO',
-      date: 'November 28, 2024',
-      readTime: '6 min read',
+      date: 'December 4, 2024',
+      readTime: '15 min read',
       image: '/blog/seo-vs-geo.jpg',
+      slug: 'seo-vs-geo',
     },
     {
       id: 3,
@@ -168,7 +169,7 @@ export default function Blog() {
                       </div>
 
                       <Link
-                        href="#"
+                        href={post.slug ? `/en/blog/${post.slug}` : "#"}
                         className="mt-4 text-[#43ffae] font-semibold flex items-center gap-2 group-hover:translate-x-2 transition-transform"
                       >
                         Read More
@@ -201,7 +202,7 @@ export default function Blog() {
                   <div className="space-y-6">
                     {blogPosts.slice(0, 3).map((post, index) => (
                       <div key={post.id} className="group cursor-pointer">
-                        <Link href="#" className="block">
+                        <Link href={post.slug ? `/en/blog/${post.slug}` : "#"} className="block">
                           <h4 className="text-white font-semibold mb-2 group-hover:text-[#43ffae] transition-colors line-clamp-2">
                             {post.title}
                           </h4>
