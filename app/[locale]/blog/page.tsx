@@ -132,54 +132,57 @@ export default function Blog() {
             {/* Main Content - Blog Posts */}
             <div className="lg:col-span-2 space-y-6">
               {blogPosts.map((post) => (
-                <article key={post.id} className="bg-[#1b1b1b] rounded-xl border border-gray-800 overflow-hidden hover:border-[#13aff0]/30 transition-all group">
-                  <div className="grid md:grid-cols-5 gap-6 p-6">
-                    {/* Featured Image Placeholder */}
-                    <div className="md:col-span-2">
-                      <div className="aspect-video bg-gradient-to-br from-[#13aff0]/20 to-[#43ffae]/20 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-                        <svg className="w-16 h-16 text-[#43ffae]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+                <Link
+                  key={post.id}
+                  href={post.slug ? `/en/blog/${post.slug}` : "#"}
+                  className="block"
+                >
+                  <article className="bg-[#1b1b1b] rounded-xl border border-gray-800 overflow-hidden hover:border-[#13aff0]/30 transition-all group cursor-pointer">
+                    <div className="grid md:grid-cols-5 gap-6 p-6">
+                      {/* Featured Image Placeholder */}
+                      <div className="md:col-span-2">
+                        <div className="aspect-video bg-gradient-to-br from-[#13aff0]/20 to-[#43ffae]/20 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+                          <svg className="w-16 h-16 text-[#43ffae]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="md:col-span-3 flex flex-col">
+                        <div className="mb-3">
+                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                            post.category === 'GEO' ? 'bg-[#13aff0]/20 text-[#13aff0]' :
+                            post.category === 'SEO' ? 'bg-[#43ffae]/20 text-[#43ffae]' :
+                            'bg-gray-800 text-gray-300'
+                          }`}>
+                            {post.category}
+                          </span>
+                        </div>
+
+                        <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-[#43ffae] transition-colors">
+                          {post.title}
+                        </h2>
+
+                        <p className="text-gray-400 mb-4 flex-grow">
+                          {post.excerpt}
+                        </p>
+
+                        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                          <span>{post.date}</span>
+                          <span>{post.readTime}</span>
+                        </div>
+
+                        <div className="text-[#43ffae] font-semibold flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                          Read More
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div className="md:col-span-3 flex flex-col">
-                      <div className="mb-3">
-                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                          post.category === 'GEO' ? 'bg-[#13aff0]/20 text-[#13aff0]' :
-                          post.category === 'SEO' ? 'bg-[#43ffae]/20 text-[#43ffae]' :
-                          'bg-gray-800 text-gray-300'
-                        }`}>
-                          {post.category}
-                        </span>
-                      </div>
-
-                      <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-[#43ffae] transition-colors">
-                        {post.title}
-                      </h2>
-
-                      <p className="text-gray-400 mb-4 flex-grow">
-                        {post.excerpt}
-                      </p>
-
-                      <div className="flex items-center justify-between text-sm text-gray-500">
-                        <span>{post.date}</span>
-                        <span>{post.readTime}</span>
-                      </div>
-
-                      <Link
-                        href={post.slug ? `/en/blog/${post.slug}` : "#"}
-                        className="mt-4 text-[#43ffae] font-semibold flex items-center gap-2 group-hover:translate-x-2 transition-transform"
-                      >
-                        Read More
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               ))}
 
               {/* Coming Soon Message */}
