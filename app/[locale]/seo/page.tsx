@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import FAQAccordion from '../components/FAQAccordion';
 import { useLocale } from 'next-intl';
 import StructuredData from '../components/StructuredData';
 import { seoServiceSchema } from '../lib/schemas';
@@ -52,6 +53,274 @@ export default function SEOServices() {
         'Revenue tracking',
       ],
       gradient: 'from-[#43ffae] to-[#13aff0]',
+    },
+  ];
+
+  const faqItems = [
+    {
+      question: 'What is SEO?',
+      answer: (
+        <p className="text-gray-400 leading-relaxed">
+          SEO (Search Engine Optimization) is the process of optimizing your website so it ranks higher in search results and attracts relevant organic traffic. It includes improving your website structure, content quality, technical performance, user experience, and search intent alignment—all directly within your website.
+        </p>
+      ),
+    },
+    {
+      question: 'Can SEO alone improve rankings?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            Yes. A properly optimized website can significantly improve rankings using:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Technical SEO</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Content & semantic optimization</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Internal structure</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>UX and engagement signals</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            Many websites underperform simply because their on-site foundation isn't optimized correctly.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: 'How long does it take to see SEO results?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            Most websites begin to see measurable improvements within 30 to 90 days, depending on:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Website condition</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Competition level</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Content quality</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Technical complexity</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            Performance-related improvements like speed and UX often show results faster.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: 'What is included in a technical SEO audit?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            A technical SEO audit typically includes:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Crawlability & indexation analysis</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Core Web Vitals & speed evaluation</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Mobile usability testing</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Site structure & internal linking review</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Duplicate content & canonical checks</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Structured data & schema review</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            You receive a clear roadmap of what needs to be fixed and why.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: 'Do you provide reporting and tracking?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            Yes. You receive regular performance reports that include:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Keyword visibility</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Organic traffic growth</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>User behavior insights</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Technical performance updates</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            Reports are simple, transparent, and focused on real business impact.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: 'Is SEO a one-time service or ongoing?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            SEO works best as an ongoing optimization process. Search behavior, competition, and algorithms evolve constantly, so continuous improvements ensure:
+          </p>
+          <ul className="space-y-2">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Stable rankings</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Consistent traffic growth</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Long-term performance</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Ongoing AI search visibility</span>
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      question: 'Is this approach safe for long-term growth?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            Yes. On-site SEO is considered the safest and most sustainable SEO approach because it is based on:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Clean technical optimization</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>High-quality content structure</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>User-focused improvements</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Transparent performance tracking</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            This minimizes risk and supports steady long-term growth.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: 'Will this improve website speed and performance?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            Yes. On-site SEO directly improves:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Page loading speed</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Core Web Vitals</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Mobile performance</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Code and asset efficiency</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            This benefits both rankings and user experience.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: 'What types of businesses benefit most from on-site SEO?',
+      answer: (
+        <>
+          <p className="text-gray-400 leading-relaxed mb-3">
+            On-site SEO is ideal for:
+          </p>
+          <ul className="space-y-2 mb-3">
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Local service businesses</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Startups & SaaS companies</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>E-commerce stores</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Lead-generation websites</span>
+            </li>
+            <li className="flex items-start text-gray-400">
+              <span className="text-[#43ffae] mr-2">•</span>
+              <span>Corporate and brand websites</span>
+            </li>
+          </ul>
+          <p className="text-gray-400 leading-relaxed">
+            Any business that wants stable, scalable organic growth benefits from on-site SEO.
+          </p>
+        </>
+      ),
     },
   ];
 
@@ -224,6 +493,20 @@ export default function SEOServices() {
               Get SEO + GEO Bundle
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center">
+            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Questions</span>
+          </h2>
+          <p className="text-lg text-gray-400 text-center mb-16">
+            Everything you need to know about on-site SEO and website optimization
+          </p>
+
+          <FAQAccordion items={faqItems} />
         </div>
       </section>
 
