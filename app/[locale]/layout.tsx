@@ -61,6 +61,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <meta name="google-site-verification" content="gGC3ZQ6wVPbLhEKelH2pwa_fF83MSHaiYCNs9ZpxQ1U" />
         <StructuredData data={organizationSchema} />
       </head>
       <body
