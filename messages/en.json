@@ -1,93 +1,187 @@
 {
   "home": {
     "hero": {
-      "badge": "🤖 AI Search Optimization Specialist",
+      "badge": "E-Commerce Growth Partner",
       "title": {
-        "line1": "GEO & AI Search Expert",
-        "line2": "Get Found in AI Results,",
-        "line3": "Not Just Google"
+        "line1": "Your Website Should Be",
+        "line2": "Making You Money.",
+        "line3": "Let's Fix That."
       },
-      "description": "Helping brands appear in ChatGPT, Perplexity, Claude, and Gemini AI-driven search results, with SEO + professional website development to match.",
+      "description": "We build fast, conversion-optimised websites and drive qualified traffic through SEO — so you get more sales, not just more visitors.",
+      "benefits": {
+        "one": "Websites delivered in 2–4 weeks",
+        "two": "Built to convert, not just look good",
+        "three": "SEO & visibility baked in from day one"
+      },
       "cta": {
-        "primary": "Get Free GEO Audit",
-        "secondary": "Explore GEO Services"
-      },
-      "platforms": {
-        "chatgpt": "ChatGPT",
-        "perplexity": "Perplexity",
-        "claude": "Claude",
-        "gemini": "Gemini",
-        "aiEngines": "AI Search Engines"
+        "primary": "Get Your Free Website Audit",
+        "secondary": "See How It Works"
       },
       "stats": {
-        "aiFocused": {
-          "title": "AI-First",
-          "description": "Future-Proof Strategy"
+        "delivery": {
+          "title": "2–4 Weeks",
+          "description": "Average delivery time"
         },
-        "engines": {
-          "title": "4 Engines",
-          "description": "Multi-AI Visibility"
+        "conversion": {
+          "title": "+40%",
+          "description": "Avg. conversion lift"
         },
-        "early": {
-          "title": "Early",
-          "description": "Competitive Edge"
+        "projects": {
+          "title": "50+",
+          "description": "Projects completed"
         },
-        "expert": {
-          "title": "Expert",
-          "description": "GEO Specialist"
+        "support": {
+          "title": "Ongoing",
+          "description": "Growth support available"
         }
       }
     },
-    "whyGeo": {
-      "title": "Why GEO Matters Now",
-      "subtitle": "The future of search is happening today. AI is becoming the primary way people find information.",
-      "reasons": {
-        "aiModels": {
-          "title": "AI Models Are Becoming Primary Search Engines",
-          "description": "Millions now use ChatGPT, Perplexity, and other AI tools instead of Google. If your brand isn't optimized for AI results, you're invisible to a massive audience."
+    "trust": {
+      "title": "Built for Results. Backed by Process.",
+      "subtitle": "Every project starts with a clear goal: more revenue. Here's what that looks like in practice.",
+      "items": {
+        "speed": {
+          "stat": "2–4 Weeks",
+          "label": "From brief to live site"
         },
-        "visibility": {
-          "title": "Brands Need Visibility in AI-Generated Answers",
-          "description": "When AI tools recommend products or services, being mentioned means conversions. GEO ensures your brand appears in those critical AI-generated recommendations."
+        "conversion": {
+          "stat": "+30–50%",
+          "label": "Typical conversion improvement"
         },
-        "edge": {
-          "title": "GEO Gives Early Adopters a Competitive Edge",
-          "description": "Most businesses haven't discovered GEO yet. Being an early adopter means dominating AI search while competitors are still figuring out what GEO even is."
+        "seo": {
+          "stat": "3x",
+          "label": "More organic traffic in 6 months"
+        },
+        "score": {
+          "stat": "< 1s",
+          "label": "Avg. load time — every extra second costs you sales"
         }
       }
     },
     "services": {
-      "title": "Complete Digital Visibility Solutions",
-      "subtitle": "From cutting-edge GEO to proven SEO and professional web development",
-      "geo": {
-        "badge": "PRIMARY",
-        "title": "GEO Services",
-        "description": "Get discovered in ChatGPT, Perplexity, Claude, and Gemini. Future-proof your brand with AI search optimization.",
-        "cta": "Explore GEO →"
+      "title": "Three Ways We Help You Grow",
+      "subtitle": "Pick the right starting point. All packages include strategy, design, and ongoing support.",
+      "starter": {
+        "badge": "STARTER",
+        "title": "Get Online & Start Selling",
+        "price": "From €799",
+        "description": "A clean, fast, professional website that actually converts visitors into customers. Perfect for businesses launching online or replacing an underperforming site.",
+        "features": {
+          "one": "WordPress or Shopify setup",
+          "two": "Mobile-first, fast-loading design",
+          "three": "Basic on-page SEO",
+          "four": "Contact forms & lead capture",
+          "five": "Delivered in 2 weeks"
+        },
+        "cta": "Start Here →"
       },
-      "seo": {
-        "title": "SEO Services",
-        "description": "Traditional search optimization that delivers stability. Rank on Google while preparing for the AI future.",
-        "cta": "View SEO Packages →"
+      "growth": {
+        "badge": "MOST POPULAR",
+        "title": "Scale Your E-Commerce Revenue",
+        "price": "From €1,999",
+        "description": "The full growth stack. A high-converting store, SEO to drive traffic, and CRO to maximise every visitor. This is what serious e-commerce brands invest in.",
+        "features": {
+          "one": "Custom Shopify or WooCommerce store",
+          "two": "Conversion rate optimisation (CRO)",
+          "three": "Full SEO setup + content strategy",
+          "four": "Speed optimisation (95+ PageSpeed)",
+          "five": "Analytics, tracking & reporting"
+        },
+        "cta": "Grow My Store →"
       },
-      "webDev": {
-        "title": "Web Development",
-        "description": "Professional websites built with GEO + SEO optimization from day one. E-commerce, landing pages, and more.",
-        "cta": "Explore Web Dev →"
+      "monthly": {
+        "badge": "ONGOING",
+        "title": "Keep Growing Every Month",
+        "price": "From €499/mo",
+        "description": "Growth doesn't stop after launch. Monthly SEO, content, and CRO improvements that compound over time — so your traffic and revenue keep climbing.",
+        "features": {
+          "one": "Monthly SEO & content updates",
+          "two": "Conversion tracking & A/B testing",
+          "three": "Technical SEO monitoring",
+          "four": "AI search visibility (GEO)",
+          "five": "Monthly performance report"
+        },
+        "cta": "Get Monthly Growth →"
       }
     },
+    "process": {
+      "title": "How It Works",
+      "subtitle": "No long discovery phases. No endless back-and-forth. Just a clean process that gets results fast.",
+      "steps": {
+        "audit": {
+          "number": "01",
+          "title": "Audit",
+          "description": "We review your website, traffic, and competitors. You get a clear report showing exactly what's holding you back — and what to fix first."
+        },
+        "build": {
+          "number": "02",
+          "title": "Build & Fix",
+          "description": "We build or rebuild your site with conversion and SEO as the foundation — not an afterthought. Fast turnaround, clean delivery."
+        },
+        "grow": {
+          "number": "03",
+          "title": "Grow",
+          "description": "Monthly SEO, content, and CRO improvements keep compounding. Your traffic and revenue grow every quarter."
+        }
+      }
+    },
+    "whyMe": {
+      "title": "Why Work With Us",
+      "subtitle": "We're not a bloated agency. We're a focused partner who builds fast and stays focused on your revenue — not billable hours.",
+      "reasons": {
+        "speed": {
+          "title": "Fast Delivery",
+          "description": "We use AI-assisted development to deliver in weeks, not months. No bloated agency timelines. No waiting 3 months for a website."
+        },
+        "cro": {
+          "title": "Conversion-First Thinking",
+          "description": "Every design decision is made with conversion in mind. Layout, copy, CTAs, page speed — all optimised to turn more visitors into buyers."
+        },
+        "seo": {
+          "title": "SEO + Future Visibility",
+          "description": "You get Google SEO and emerging AI search (GEO) coverage. Your brand stays visible as search evolves — on Google today, in AI tomorrow."
+        }
+      }
+    },
+    "caseStudy": {
+      "title": "What a Growth Project Looks Like",
+      "subtitle": "Here's a typical before-and-after from a full Growth package engagement.",
+      "before": {
+        "label": "BEFORE",
+        "title": "Online store with potential — but leaking revenue",
+        "items": {
+          "one": "Slow site — 4.2s load time on mobile",
+          "two": "No clear CTA above the fold",
+          "three": "2.1% conversion rate",
+          "four": "Ranking for 12 keywords",
+          "five": "Bouncing 70% of visitors"
+        }
+      },
+      "after": {
+        "label": "AFTER",
+        "title": "Optimised for traffic, conversions, and revenue",
+        "items": {
+          "one": "Fast site — 0.9s load time (95 PageSpeed)",
+          "two": "Clear offer and CTA on every page",
+          "three": "3.8% conversion rate (+81%)",
+          "four": "Ranking for 140+ keywords",
+          "five": "Bounce rate down to 42%"
+        }
+      },
+      "disclaimer": "Results based on a composite of typical client outcomes. Individual results vary."
+    },
     "cta": {
-      "title": "Ready to Dominate AI Search?",
-      "subtitle": "Get a free GEO audit and discover how to appear in ChatGPT, Perplexity, and other AI search results.",
-      "primaryButton": "Get Free GEO Audit",
-      "secondaryButton": "Learn About GEO",
-      "disclaimer": "No obligations • See your AI visibility opportunities"
+      "title": "Ready to Make Your Website Work?",
+      "subtitle": "Get a free audit of your site. We'll show you the top 3 things that are costing you sales — no pitch, no obligation.",
+      "primaryButton": "Get My Free Audit",
+      "secondaryButton": "View Packages",
+      "disclaimer": "Free, no-obligation • Delivered within 48 hours"
     },
     "footer": {
       "company": "SiteLab",
-      "tagline": "GEO • AI Search • SEO • Web Development",
+      "tagline": "Web Development • E-Commerce • SEO • CRO",
       "copyright": "© 2025 SiteLab. All rights reserved.",
-      "slogan": "Get Found in AI Results • Future-Proof Your Brand"
+      "slogan": "More Traffic. More Conversions. More Revenue."
     }
   },
   "navigation": {
@@ -100,7 +194,7 @@
   "notFound": {
     "title": "404",
     "heading": "Page Not Found",
-    "description": "Looks like this page got lost in the AI search results. The page you're looking for doesn't exist or has been moved.",
+    "description": "Looks like this page got lost. The page you're looking for doesn't exist or has been moved.",
     "homeButton": "Back to Home",
     "contactButton": "Contact Us"
   }
