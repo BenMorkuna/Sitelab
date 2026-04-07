@@ -256,8 +256,7 @@ export async function POST(request: NextRequest) {
 
     // Format service type for display
     const serviceLabels: Record<string, string> = {
-      'geo': 'GEO Services',
-      'seo': 'SEO Services',
+      'seo-geo': 'SEO / GEO Services',
       'webdev': 'Web Development',
       'ecommerce': 'E-commerce Development'
     };
