@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: `https://www.sitelab.lt/${locale}`,
     },
-    verification: {
-      google: "gGC3ZQ6wVPbLhEKelH2pwa_fF83MSHaiYCNs9ZpxQ1U",
+    other: {
+      'google-site-verification': 'gGC3ZQ6wVPbLhEKelH2pwa_fF83MSHaiYCNs9ZpxQ1U',
     },
   };
 }

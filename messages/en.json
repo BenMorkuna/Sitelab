@@ -9,17 +9,17 @@
       },
       "description": "We build fast, conversion-optimised websites and drive qualified traffic through SEO — so you get more sales, not just more visitors.",
       "benefits": {
-        "one": "Websites delivered in 2–4 weeks",
+        "one": "Websites delivered in 1–2 weeks",
         "two": "Built to convert, not just look good",
         "three": "SEO & visibility baked in from day one"
       },
       "cta": {
-        "primary": "Get Your Free Website Audit",
+        "primary": "Start Your Project",
         "secondary": "See How It Works"
       },
       "stats": {
         "delivery": {
-          "title": "2–4 Weeks",
+          "title": "1–2 Weeks",
           "description": "Average delivery time"
         },
         "conversion": {
@@ -41,7 +41,7 @@
       "subtitle": "Every project starts with a clear goal: more revenue. Here's what that looks like in practice.",
       "items": {
         "speed": {
-          "stat": "2–4 Weeks",
+          "stat": "1–2 Weeks",
           "label": "From brief to live site"
         },
         "conversion": {
@@ -84,7 +84,7 @@
           "one": "Custom Shopify or WooCommerce store",
           "two": "Conversion rate optimisation (CRO)",
           "three": "Full SEO setup + content strategy",
-          "four": "Speed optimisation (95+ PageSpeed)",
+          "four": "Speed optimisation",
           "five": "Analytics, tracking & reporting"
         },
         "cta": "Grow My Store →"
@@ -110,8 +110,8 @@
       "steps": {
         "audit": {
           "number": "01",
-          "title": "Audit",
-          "description": "We review your website, traffic, and competitors. You get a clear report showing exactly what's holding you back — and what to fix first."
+          "title": "Plan",
+          "description": "We map out exactly what needs to be built and why. Goals, audience, structure, and priorities — all defined upfront so there are no surprises and every decision points toward revenue."
         },
         "build": {
           "number": "02",
@@ -171,11 +171,11 @@
       "disclaimer": "Results based on a composite of typical client outcomes. Individual results vary."
     },
     "cta": {
-      "title": "Ready to Make Your Website Work?",
-      "subtitle": "Get a free audit of your site. We'll show you the top 3 things that are costing you sales — no pitch, no obligation.",
-      "primaryButton": "Get My Free Audit",
+      "title": "Ready to Build a Website That Sells?",
+      "subtitle": "Tell us about your business. We'll put together a clear plan and honest pricing — no sales pitch, no fluff.",
+      "primaryButton": "Start Your Project",
       "secondaryButton": "View Packages",
-      "disclaimer": "Free, no-obligation • Delivered within 48 hours"
+      "disclaimer": "Free consultation • No commitment"
     },
     "footer": {
       "company": "SiteLab",
@@ -188,6 +188,8 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
+    "seoServices": "SEO/GEO Services",
+    "webSolutions": "Web Solutions",
     "portfolio": "Portfolio",
     "contact": "Contact"
   },

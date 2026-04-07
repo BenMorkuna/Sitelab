@@ -1,0 +1,203 @@
+{
+  "home": {
+    "hero": {
+      "badge": "E-Komercijos Augimo Partneris",
+      "title": {
+        "line1": "Jūsų Svetainė Turėtų",
+        "line2": "Uždirbti Pinigus.",
+        "line3": "Pataisykime Tai."
+      },
+      "description": "Kuriame greitas, konversijoms optimizuotas svetaines ir pritraukiame tikslinį srautą per SEO — kad gautumėte daugiau pardavimų, o ne tik lankytojų.",
+      "benefits": {
+        "one": "Svetainės pristatymas per 1–2 savaites",
+        "two": "Sukurta konvertuoti, ne tik gerai atrodyti",
+        "three": "SEO ir matomumas integruoti nuo pat pradžių"
+      },
+      "cta": {
+        "primary": "Pradėti projektą",
+        "secondary": "Sužinoti kaip tai veikia"
+      },
+      "stats": {
+        "delivery": {
+          "title": "1–2 savaitės",
+          "description": "Vidutinis pristatymo laikas"
+        },
+        "conversion": {
+          "title": "+40%",
+          "description": "Vid. konversijų augimas"
+        },
+        "projects": {
+          "title": "50+",
+          "description": "Įgyvendintų projektų"
+        },
+        "support": {
+          "title": "Nuolatinis",
+          "description": "Augimo palaikymas"
+        }
+      }
+    },
+    "trust": {
+      "title": "Sukurta Rezultatams. Pagrįsta Procesu.",
+      "subtitle": "Kiekvienas projektas prasideda nuo aiškaus tikslo: daugiau pajamų. Štai kaip tai atrodo praktikoje.",
+      "items": {
+        "speed": {
+          "stat": "1–2 savaitės",
+          "label": "Nuo užsakymo iki veikiančios svetainės"
+        },
+        "conversion": {
+          "stat": "+30–50%",
+          "label": "Tipinis konversijų pagerėjimas"
+        },
+        "seo": {
+          "stat": "3x",
+          "label": "Daugiau organinio srauto per 6 mėnesius"
+        },
+        "score": {
+          "stat": "< 1s",
+          "label": "Vid. užkrovimo laikas — kiekviena papildoma sekundė kainuoja pardavimus"
+        }
+      }
+    },
+    "services": {
+      "title": "Trys Būdai Padėti Jums Augti",
+      "subtitle": "Pasirinkite tinkamą pradžios tašką. Visi paketai apima strategiją, dizainą ir nuolatinę pagalbą.",
+      "starter": {
+        "badge": "PRADINIS",
+        "title": "Atsiraskite Internete ir Pradėkite Pardavinėti",
+        "price": "Nuo €799",
+        "description": "Švari, greita, profesionali svetainė, kuri iš tiesų verčia lankytojus į klientus. Puikiai tinka verslams, pradedantiems internete arba keičiantiems neefektyvią svetainę.",
+        "features": {
+          "one": "WordPress arba Shopify diegimas",
+          "two": "Mobiliam įrenginiui pritaikytas, greitas dizainas",
+          "three": "Bazinis puslapio SEO",
+          "four": "Kontaktų formos ir potencialių klientų rinkimas",
+          "five": "Pristatoma per 2 savaites"
+        },
+        "cta": "Pradėti čia →"
+      },
+      "growth": {
+        "badge": "POPULIARIAUSIAS",
+        "title": "Padidinkite E-Komercijos Pajamas",
+        "price": "Nuo €1.999",
+        "description": "Pilnas augimo paketas. Aukštai konvertuojanti parduotuvė, SEO srautui pritraukti ir CRO kiekvienam lankytojui maksimaliai išnaudoti. Tai yra tai, į ką investuoja rimti e-komercijos prekių ženklai.",
+        "features": {
+          "one": "Individualus Shopify arba WooCommerce parduotuvė",
+          "two": "Konversijų rodiklio optimizavimas (CRO)",
+          "three": "Pilnas SEO nustatymas ir turinio strategija",
+          "four": "Greičio optimizavimas",
+          "five": "Analizė, sekimas ir ataskaitos"
+        },
+        "cta": "Auginti mano parduotuvę →"
+      },
+      "monthly": {
+        "badge": "NUOLATINIS",
+        "title": "Augkite Kiekvieną Mėnesį",
+        "price": "Nuo €499/mėn.",
+        "description": "Augimas nesibaigia po paleidimo. Mėnesiniai SEO, turinio ir CRO patobulinimai, kurie kaupiasi laikui bėgant — kad jūsų srautas ir pajamos nuolat augtų.",
+        "features": {
+          "one": "Mėnesiniai SEO ir turinio atnaujinimai",
+          "two": "Konversijų sekimas ir A/B testavimas",
+          "three": "Techninis SEO stebėjimas",
+          "four": "AI paieškos matomumas (GEO)",
+          "five": "Mėnesinė veiklos ataskaita"
+        },
+        "cta": "Gauti mėnesinį augimą →"
+      }
+    },
+    "process": {
+      "title": "Kaip Tai Veikia",
+      "subtitle": "Jokių ilgų analizės fazių. Jokio begalinio susirašinėjimo. Tik aiškus procesas, kuris greitai duoda rezultatus.",
+      "steps": {
+        "audit": {
+          "number": "01",
+          "title": "Planuojame",
+          "description": "Tiksliai nustatome, ką reikia kurti ir kodėl. Tikslai, auditorija, struktūra ir prioritetai — viskas apibrėžta iš anksto, kad nebūtų staigmenų ir kiekvienas sprendimas vestų link pajamų."
+        },
+        "build": {
+          "number": "02",
+          "title": "Kūrimas ir taisymas",
+          "description": "Kuriame arba pertvarkome jūsų svetainę su konversijomis ir SEO kaip pagrindu — ne kaip priedą. Greitas pristatymas, švariai atlikta."
+        },
+        "grow": {
+          "number": "03",
+          "title": "Augimas",
+          "description": "Mėnesiniai SEO, turinio ir CRO patobulinimai kaupiasi. Jūsų srautas ir pajamos auga kiekvieną ketvirtį."
+        }
+      }
+    },
+    "whyMe": {
+      "title": "Kodėl Dirbti Su Mumis",
+      "subtitle": "Mes nesame išpūsta agentūra. Esame orientuotas partneris, kuris greitai kuria ir nuolat fokusuojasi į jūsų pajamas — ne apmokestinamąsias valandas.",
+      "reasons": {
+        "speed": {
+          "title": "Greitas pristatymas",
+          "description": "Naudojame AI pagalba pagreitintą kūrimą, kad pristatytume per savaites, o ne mėnesius. Jokių išpūstų agentūros terminų. Jokio 3 mėnesių laukimo svetainei."
+        },
+        "cro": {
+          "title": "Konversijomis grįstas mąstymas",
+          "description": "Kiekvienas dizaino sprendimas priimamas atsižvelgiant į konversijas. Išdėstymas, tekstai, CTA, puslapio greitis — viskas optimizuota, kad daugiau lankytojų virstų pirkėjais."
+        },
+        "seo": {
+          "title": "SEO matomumas",
+          "description": "Gausite Google SEO ir naujų AI paieškų (GEO) aprėptį. Jūsų prekės ženklas išlieka matomas keičiantis paieškoms — šiandien Google, rytoj AI."
+        }
+      }
+    },
+    "caseStudy": {
+      "title": "Kaip Atrodo Augimo Projektas",
+      "subtitle": "Tipiškas prieš ir po iš pilno Augimo paketo angažavimo.",
+      "before": {
+        "label": "PRIEŠ",
+        "title": "Internetinė parduotuvė su potencialu — bet prarandanti pajamas",
+        "items": {
+          "one": "Lėta svetainė — 4,2 s užkrovimo laikas mobiliajame",
+          "two": "Nėra aiškaus CTA virš brūkšnio",
+          "three": "2,1% konversijų rodiklis",
+          "four": "Pozicionuojama pagal 12 raktažodžių",
+          "five": "70% lankytojų atšokimas"
+        }
+      },
+      "after": {
+        "label": "PO",
+        "title": "Optimizuota srautui, konversijoms ir pajamoms",
+        "items": {
+          "one": "Greita svetainė — 0,9 s užkrovimo laikas (95 PageSpeed)",
+          "two": "Aiškus pasiūlymas ir CTA kiekviename puslapyje",
+          "three": "3,8% konversijų rodiklis (+81%)",
+          "four": "Pozicionuojama pagal 140+ raktažodžių",
+          "five": "Atšokimo rodiklis sumažintas iki 42%"
+        }
+      },
+      "disclaimer": "Rezultatai pagrįsti tipinių kliento rezultatų rinkiniu. Individualūs rezultatai gali skirtis."
+    },
+    "cta": {
+      "title": "Pasiruošę Sukurti Svetainę, Kuri Parduoda?",
+      "subtitle": "Papasakokite apie savo verslą. Parengsime aiškų planą ir sąžiningą kainą — jokio pardavimo, jokio pūtimo.",
+      "primaryButton": "Pradėti projektą",
+      "secondaryButton": "Peržiūrėti paketus",
+      "disclaimer": "Nemokama konsultacija • Jokių įsipareigojimų"
+    },
+    "footer": {
+      "company": "SiteLab",
+      "tagline": "Svetainių kūrimas • E-komercija • SEO • CRO",
+      "copyright": "© 2025 SiteLab. Visos teisės saugomos.",
+      "slogan": "Daugiau srauto. Daugiau konversijų. Daugiau pajamų."
+    }
+  },
+  "navigation": {
+    "home": "Pagrindinis",
+    "about": "Apie mus",
+    "services": "Paslaugos",
+    "seoServices": "SEO/GEO Paslaugos",
+    "webSolutions": "Web Sprendimai",
+    "portfolio": "Portfolio",
+    "contact": "Kontaktai"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Puslapis nerastas",
+    "description": "Atrodo, šis puslapis pasiklydo. Puslapis, kurio ieškote, neegzistuoja arba buvo perkeltas.",
+    "homeButton": "Grįžti į pagrindinį",
+    "contactButton": "Susisiekti"
+  }
+}

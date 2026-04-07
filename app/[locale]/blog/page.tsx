@@ -4,15 +4,49 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import { useLocale } from 'next-intl';
 
 export default function Blog() {
+  const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState('All');
   const [email, setEmail] = useState('');
 
-  const categories = ['All', 'GEO', 'SEO', 'Web Development', 'AI Search', 'Case Studies'];
+  const isLt = locale === 'lt';
 
-  // Placeholder blog posts - these will be replaced with real content later
-  const blogPosts = [
+  const categories = isLt
+    ? ['Visi', 'GEO', 'SEO', 'Svetainių Kūrimas', 'AI Paieška', 'Atvejų Analizės']
+    : ['All', 'GEO', 'SEO', 'Web Development', 'AI Search', 'Case Studies'];
+
+  const blogPosts = isLt ? [
+    {
+      id: 1,
+      title: 'Pradžia su GEO: Pilnas Vadovas',
+      excerpt: 'Sužinokite, kaip optimizuoti turinį AI paieškos varikliams, tokiems kaip ChatGPT, Perplexity ir Claude. Atraskite GEO pagrindus ir kodėl jie svarbūs jūsų verslui.',
+      category: 'GEO',
+      date: '2024 m. gruodžio 1 d.',
+      readTime: '8 min. skaitymo',
+      image: '/blog/geo-guide.jpg',
+    },
+    {
+      id: 2,
+      title: 'SEO ir GEO: Koks Skirtumas?',
+      excerpt: 'Supraskite pagrindinius skirtumus tarp tradicinio SEO ir modernaus GEO. Sužinokite, kada naudoti kiekvieną metodą maksimaliam paieškos matomumui.',
+      category: 'SEO',
+      date: '2024 m. gruodžio 4 d.',
+      readTime: '15 min. skaitymo',
+      image: '/blog/seo-vs-geo.jpg',
+      slug: 'seo-vs-geo',
+    },
+    {
+      id: 3,
+      title: 'Modernių Svetainių Kūrimas su Next.js',
+      excerpt: 'Išnagrinėkite Next.js naudojimo privalumus savo sekančiam žiniatinklio projektui. Greitis, SEO ir kūrėjų patirtis — viskas viename karkase.',
+      category: 'Svetainių Kūrimas',
+      date: '2024 m. lapkričio 25 d.',
+      readTime: '10 min. skaitymo',
+      image: '/blog/nextjs.jpg',
+    },
+  ] : [
     {
       id: 1,
       title: 'Getting Started with GEO: A Complete Guide',
@@ -60,13 +94,15 @@ export default function Blog() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Insights on GEO, SEO &<br/>
+            {isLt ? 'Įžvalgos apie GEO, SEO ir' : 'Insights on GEO, SEO &'}<br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">
-              Digital Marketing
+              {isLt ? 'Skaitmeninę Rinkodarą' : 'Digital Marketing'}
             </span>
           </h1>
           <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-            Practical strategies, case studies, and insights on AI search optimization, traditional SEO, and modern web development
+            {isLt
+              ? 'Praktinės strategijos, atvejų analizės ir įžvalgos apie AI paieškos optimizavimą, tradicinį SEO ir modernų svetainių kūrimą'
+              : 'Practical strategies, case studies, and insights on AI search optimization, traditional SEO, and modern web development'}
           </p>
 
           {/* Email Subscription Form */}
@@ -75,7 +111,7 @@ export default function Blog() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email for updates"
+              placeholder={isLt ? 'Įveskite el. paštą naujienoms' : 'Enter your email for updates'}
               className="flex-1 px-4 py-3 bg-[#1b1b1b] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#13aff0] transition-colors"
               required
             />
@@ -83,7 +119,7 @@ export default function Blog() {
               type="submit"
               className="px-6 py-3 bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white rounded-lg font-semibold hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all hover:scale-105 whitespace-nowrap"
             >
-              Subscribe for Updates
+              {isLt ? 'Prenumeruoti' : 'Subscribe for Updates'}
             </button>
           </form>
         </div>
@@ -114,7 +150,7 @@ export default function Blog() {
             <div className="relative w-full lg:w-auto">
               <input
                 type="text"
-                placeholder="Search articles..."
+                placeholder={isLt ? 'Ieškoti straipsnių...' : 'Search articles...'}
                 className="w-full lg:w-64 px-4 py-2 pl-10 bg-[#1b1b1b] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#13aff0] transition-colors"
               />
               <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,7 +170,7 @@ export default function Blog() {
               {blogPosts.map((post) => (
                 <Link
                   key={post.id}
-                  href={post.slug ? `/en/blog/${post.slug}` : "#"}
+                  href={post.slug ? `/${locale}/blog/${post.slug}` : "#"}
                   className="block"
                 >
                   <article className="bg-[#1b1b1b] rounded-xl border border-gray-800 overflow-hidden hover:border-[#13aff0]/30 transition-all group cursor-pointer">
@@ -174,7 +210,7 @@ export default function Blog() {
                         </div>
 
                         <div className="text-[#43ffae] font-semibold flex items-center gap-2 group-hover:translate-x-2 transition-transform">
-                          Read More
+                          {isLt ? 'Skaityti Daugiau' : 'Read More'}
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -192,8 +228,8 @@ export default function Blog() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">More Articles Coming Soon</h3>
-                <p className="text-gray-400">We're working on publishing more valuable content. Subscribe above to get notified!</p>
+                <h3 className="text-xl font-bold text-white mb-2">{isLt ? 'Daugiau Straipsnių Jau Greitai' : 'More Articles Coming Soon'}</h3>
+                <p className="text-gray-400">{isLt ? 'Dirbame ties nauju turiniu. Prenumeruokite aukščiau, kad gautumėte pranešimą!' : 'We\'re working on publishing more valuable content. Subscribe above to get notified!'}</p>
               </div>
             </div>
 
@@ -201,11 +237,11 @@ export default function Blog() {
             <div className="lg:col-span-1">
               <div className="sticky top-36">
                 <div className="bg-[#1b1b1b] rounded-xl border border-gray-800 p-6">
-                  <h3 className="text-xl font-bold text-white mb-6">Popular Posts</h3>
+                  <h3 className="text-xl font-bold text-white mb-6">{isLt ? 'Populiarūs Straipsniai' : 'Popular Posts'}</h3>
                   <div className="space-y-6">
                     {blogPosts.slice(0, 3).map((post, index) => (
                       <div key={post.id} className="group cursor-pointer">
-                        <Link href={post.slug ? `/en/blog/${post.slug}` : "#"} className="block">
+                        <Link href={post.slug ? `/${locale}/blog/${post.slug}` : "#"} className="block">
                           <h4 className="text-white font-semibold mb-2 group-hover:text-[#43ffae] transition-colors line-clamp-2">
                             {post.title}
                           </h4>
@@ -217,13 +253,13 @@ export default function Blog() {
 
                   {/* Subscribe CTA */}
                   <div className="mt-8 pt-8 border-t border-gray-800">
-                    <h4 className="text-white font-semibold mb-3">Stay Updated</h4>
-                    <p className="text-sm text-gray-400 mb-4">Get the latest insights delivered to your inbox</p>
+                    <h4 className="text-white font-semibold mb-3">{isLt ? 'Būkite Informuoti' : 'Stay Updated'}</h4>
+                    <p className="text-sm text-gray-400 mb-4">{isLt ? 'Gaukite naujausias įžvalgas į savo el. paštą' : 'Get the latest insights delivered to your inbox'}</p>
                     <Link
                       href="#"
                       className="block w-full text-center py-3 bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white rounded-lg font-semibold hover:scale-105 transition-all"
                     >
-                      Subscribe
+                      {isLt ? 'Prenumeruoti' : 'Subscribe'}
                     </Link>
                   </div>
                 </div>

@@ -1,8 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import { useLocale } from 'next-intl';
+import { getT } from '../lib/pageTranslations';
+import { getSlug } from '../lib/routes';
 
 export default function About() {
+  const locale = useLocale();
+  const t = getT(locale, 'about');
+
   return (
     <div className="min-h-screen bg-[#171717]">
       <Navigation />
@@ -10,20 +18,17 @@ export default function About() {
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#13aff0]/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#43ffae]/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
-
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="inline-block mb-6 px-6 py-2 bg-[#1b1b1b] border border-[#43ffae]/30 rounded-full">
-            <span className="text-[#43ffae] text-sm font-bold">Ahead of the Curve</span>
+            <span className="text-[#43ffae] text-sm font-bold">{t.badge}</span>
           </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
-            About SiteLab
+            {t.heroTitle1}
             <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">
-              The Future of Search
+              {t.heroTitle2}
             </span>
           </h1>
-          <p className="text-xl text-gray-400">
-            Bringing brands visibility in the new AI-driven search era
-          </p>
+          <p className="text-xl text-gray-400">{t.heroSub}</p>
         </div>
       </section>
 
@@ -31,56 +36,33 @@ export default function About() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1b1b1b] border-y border-gray-800">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-white mb-8 text-center">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Mission</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">{t.missionTitle}</span>
           </h2>
           <div className="bg-[#171717] p-10 rounded-2xl border border-[#13aff0]">
             <p className="text-2xl text-gray-300 leading-relaxed mb-6">
-              We exist to help businesses <span className="text-[#43ffae] font-bold">thrive in the AI search revolution</span>.
+              {t.missionP1} <span className="text-[#43ffae] font-bold">{t.missionHighlight}</span>.
             </p>
-            <p className="text-lg text-gray-400 leading-relaxed">
-              While others are catching up with traditional SEO, we're already mastering GEO—ensuring brands appear in ChatGPT, Perplexity, Claude, and Gemini responses. We combine cutting-edge AI search optimization with proven SEO and professional web development to deliver complete digital visibility.
-            </p>
+            <p className="text-lg text-gray-400 leading-relaxed">{t.missionP2}</p>
           </div>
         </div>
       </section>
 
-      {/* Why We Shifted to GEO */}
+      {/* Why GEO */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-white mb-12 text-center">
-            Why We Shifted to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">GEO</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">{t.shiftTitle}</span>
           </h2>
-
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-[#1b1b1b] p-8 rounded-2xl border border-gray-800">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-6 text-white text-2xl font-bold">
-                1
+            {t.shift.map((item, i) => (
+              <div key={i} className="bg-[#1b1b1b] p-8 rounded-2xl border border-gray-800">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-6 text-[#171717] text-2xl font-bold">
+                  {i + 1}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
+                <p className="text-gray-400">{item.desc}</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Saw the Future</h3>
-              <p className="text-gray-400">
-                We recognized early that AI search would fundamentally change how people discover brands. Traditional SEO alone wasn't enough anymore.
-              </p>
-            </div>
-
-            <div className="bg-[#1b1b1b] p-8 rounded-2xl border border-gray-800">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#43ffae] to-[#13aff0] rounded-xl flex items-center justify-center mb-6 text-white text-2xl font-bold">
-                2
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">Early Adoption</h3>
-              <p className="text-gray-400">
-                Instead of waiting for GEO to become mainstream, we invested in understanding and mastering it while the opportunity window was wide open.
-              </p>
-            </div>
-
-            <div className="bg-[#1b1b1b] p-8 rounded-2xl border border-gray-800">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-6 text-white text-2xl font-bold">
-                3
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">Client Results</h3>
-              <p className="text-gray-400">
-                Our clients are now dominating both traditional search AND AI-generated results, giving them an unbeatable competitive advantage.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -89,166 +71,56 @@ export default function About() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1b1b1b] border-y border-gray-800">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-white mb-8 text-center">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Background</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">{t.bgTitle}</span>
           </h2>
           <div className="space-y-6 text-gray-400">
-            <p className="text-lg leading-relaxed">
-              SiteLab started as a traditional SEO and web development agency. We helped businesses rank on Google and built professional websites. But we noticed a shift happening—more and more people were using ChatGPT and other AI tools instead of Google.
-            </p>
-            <p className="text-lg leading-relaxed">
-              That's when we made a strategic pivot. While continuing to deliver excellent SEO and web development services, we invested heavily in understanding <span className="text-white font-semibold">Generative Engine Optimization (GEO)</span>.
-            </p>
-            <p className="text-lg leading-relaxed">
-              Today, we're one of the few agencies in Europe specializing in GEO, giving our clients first-mover advantage in AI search visibility. We combine this cutting-edge expertise with proven SEO strategies and professional web development to deliver <span className="text-[#43ffae] font-semibold">complete search dominance</span>.
-            </p>
+            {t.bg.map((para, i) => (
+              <p key={i} className="text-lg leading-relaxed">{para}</p>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Our Core Services */}
+      {/* Core Services */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-white mb-12 text-center">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Core Services</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">{t.servicesTitle}</span>
           </h2>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link href="/en/geo" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#13aff0] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#13aff0]/20">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#13aff0] transition-colors">GEO Optimization</h3>
-              <p className="text-gray-400 text-sm mb-3">
-                AI search visibility for ChatGPT, Perplexity, Claude, and Gemini
-              </p>
-              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                Learn More →
-              </div>
-            </Link>
-
-            <Link href="/en/seo" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#43ffae] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#43ffae]/20">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#43ffae] to-[#13aff0] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#43ffae] transition-colors">SEO Services</h3>
-              <p className="text-gray-400 text-sm mb-3">
-                Traditional search engine optimization for Google and Bing rankings
-              </p>
-              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                Learn More →
-              </div>
-            </Link>
-
-            <Link href="/en/web-development" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#13aff0] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#13aff0]/20">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#13aff0] transition-colors">Web Development</h3>
-              <p className="text-gray-400 text-sm mb-3">
-                Custom websites and applications built with GEO + SEO optimization
-              </p>
-              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                Learn More →
-              </div>
-            </Link>
-
-            <Link href="/en/ecommerce" className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#43ffae] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#43ffae]/20">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#43ffae] to-[#13aff0] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#43ffae] transition-colors">E-Commerce Development</h3>
-              <p className="text-gray-400 text-sm mb-3">
-                Online stores optimized for conversions and search visibility
-              </p>
-              <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                Learn More →
-              </div>
-            </Link>
+            {t.services.map((svc, i) => (
+              <Link key={i} href={`/${locale}/${svc.href}`} className="group bg-[#1b1b1b] p-6 rounded-2xl border-2 border-gray-800 hover:border-[#13aff0] transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-[#13aff0]/20">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#13aff0] to-[#43ffae] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#13aff0] transition-colors">{svc.title}</h3>
+                <p className="text-gray-400 text-sm mb-3">{svc.desc}</p>
+                <div className="flex items-center text-[#43ffae] font-semibold text-sm group-hover:translate-x-1 transition-transform">{t.learnMore}</div>
+              </Link>
+            ))}
           </div>
-
           <div className="mt-12 text-center">
-            <p className="text-lg text-gray-400 mb-6">
-              All services work together to create complete digital presence and search dominance
-            </p>
-            <Link
-              href="/en/contact"
-              className="inline-block bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-10 py-4 rounded-full text-lg font-bold hover:scale-105 transition-all hover:shadow-2xl"
-            >
-              Discuss Your Project
+            <p className="text-lg text-gray-400 mb-6">{t.servicesFooter}</p>
+            <Link href={`/${locale}/${getSlug('contact', locale)}`} className="inline-block bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-10 py-4 rounded-full text-lg font-bold hover:scale-105 transition-all hover:shadow-2xl">
+              {t.servicesCta}
             </Link>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#171717]">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-12 text-center">
-            What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Believe</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Future-First Thinking',
-                description: 'We don\'t just follow trends—we anticipate them. GEO isn\'t a buzzword for us; it\'s the foundation of modern search strategy.',
-              },
-              {
-                title: 'Transparency Always',
-                description: 'No smoke and mirrors. We show you exactly what we do, why we do it, and the results you get. Clear reporting, clear communication.',
-              },
-              {
-                title: 'Results Over Vanity Metrics',
-                description: 'We care about metrics that matter: AI mentions, conversions, revenue growth. Not just traffic numbers that don\'t translate to business value.',
-              },
-              {
-                title: 'Early Adopter Advantage',
-                description: 'Being early gives our clients unfair advantages. We help you dominate new channels while competitors are still learning they exist.',
-              },
-            ].map((value, idx) => (
-              <div key={idx} className="bg-[#1b1b1b] p-8 rounded-2xl border border-gray-800 hover:border-[#13aff0] transition-all">
-                <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Placeholder */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#1b1b1b] border-y border-gray-800">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-white mb-12 text-center">
-            What Clients <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">Say</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">{t.valuesTitle}</span>
           </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "SiteLab positioned us in ChatGPT results before our competitors even knew what GEO was. Game-changing.",
-                author: "Tech Startup Founder",
-              },
-              {
-                quote: "Finally, an agency that understands the future. Our visibility in AI search is incredible.",
-                author: "E-commerce Director",
-              },
-              {
-                quote: "They don't just do SEO—they think ahead. That's why we chose them.",
-                author: "Marketing Manager",
-              },
-            ].map((testimonial, idx) => (
-              <div key={idx} className="bg-[#171717] p-8 rounded-2xl border border-gray-800">
-                <div className="text-[#43ffae] text-4xl mb-4">"</div>
-                <p className="text-gray-300 mb-6 italic">{testimonial.quote}</p>
-                <p className="text-gray-500 font-semibold">— {testimonial.author}</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {t.values.map((v, i) => (
+              <div key={i} className="bg-[#171717] p-8 rounded-2xl border border-gray-800 hover:border-[#13aff0] transition-all">
+                <h3 className="text-2xl font-bold text-white mb-4">{v.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -258,22 +130,14 @@ export default function About() {
       {/* CTA */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#13aff0] via-[#43ffae] to-[#13aff0]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[#1b1b1b] mb-6">
-            Ready to Work Together?
-          </h2>
-          <p className="text-xl text-[#1b1b1b]/90 mb-10">
-            Let's discuss how GEO, SEO, or web development can transform your business.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-[#13aff0] px-12 py-5 rounded-full text-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 hover:shadow-2xl"
-          >
-            Get in Touch
+          <h2 className="text-4xl font-bold text-[#1b1b1b] mb-6">{t.ctaTitle}</h2>
+          <p className="text-xl text-[#1b1b1b]/90 mb-10">{t.ctaSub}</p>
+          <Link href={`/${locale}/${getSlug('contact', locale)}`} className="inline-block bg-white text-[#13aff0] px-12 py-5 rounded-full text-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 hover:shadow-2xl">
+            {t.ctaBtn}
           </Link>
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

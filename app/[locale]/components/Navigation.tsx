@@ -1,14 +1,28 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { getSlug, toEnSlug } from '../lib/routes';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const t = useTranslations('navigation');
   const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const switchLocale = (newLocale: string) => {
+    const segments = pathname.split('/');
+    const currentSlug = segments[2];
+    // Map current slug to EN, then to target locale slug
+    const enSlug = toEnSlug(currentSlug);
+    segments[1] = newLocale;
+    segments[2] = getSlug(enSlug, newLocale);
+    router.push(segments.join('/'));
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1b1b1b]/95 backdrop-blur-md border-b border-gray-800">
@@ -61,39 +75,21 @@ export default function Navigation() {
                 <div className="absolute top-full left-0 pt-2 w-56">
                   <div className="bg-[#1b1b1b] border border-gray-800 rounded-xl shadow-2xl shadow-black/50 py-2 animate-fadeIn">
                   <Link
-                    href={`/${locale}/geo`}
+                    href={`/${locale}/${getSlug('web-solutions', locale)}`}
                     className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#43ffae] rounded-full"></div>
-                      GEO Optimization
+                      {t('webSolutions')}
                     </div>
                   </Link>
                   <Link
-                    href={`/${locale}/seo`}
+                    href={`/${locale}/${getSlug('seo', locale)}`}
                     className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#13aff0] rounded-full"></div>
-                      SEO
-                    </div>
-                  </Link>
-                  <Link
-                    href={`/${locale}/web-development`}
-                    className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-[#43ffae] rounded-full"></div>
-                      Web Development
-                    </div>
-                  </Link>
-                  <Link
-                    href={`/${locale}/ecommerce`}
-                    className="block px-4 py-3 text-gray-300 hover:bg-[#13aff0]/10 hover:text-[#43ffae] transition-colors font-medium"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-[#13aff0] rounded-full"></div>
-                      E-commerce
+                      {t('seoServices')}
                     </div>
                   </Link>
                   </div>
@@ -101,18 +97,35 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link href={`/${locale}/about`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
+            <Link href={`/${locale}/${getSlug('about', locale)}`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
               {t('about')}
             </Link>
-            <Link href={`/${locale}/blog`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
+            <Link href={`/${locale}/${getSlug('blog', locale)}`} className="text-gray-300 hover:text-[#43ffae] transition-colors font-medium">
               Blog
             </Link>
             <Link
-              href={`/${locale}/contact`}
+              href={`/${locale}/${getSlug('contact', locale)}`}
               className="bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all hover:scale-105 font-semibold"
             >
               {t('contact')}
             </Link>
+
+            {/* Language switcher */}
+            <div className="flex items-center gap-1 bg-[#171717] border border-gray-800 rounded-full p-1">
+              {['lt', 'en'].map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => switchLocale(lang)}
+                  className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
+                    locale === lang
+                      ? 'bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-[#171717]'
+                      : 'text-gray-500 hover:text-white'
+                  }`}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -148,39 +161,25 @@ export default function Navigation() {
               {isServicesOpen && (
                 <div className="pl-4 space-y-2 mt-2">
                   <Link
-                    href={`/${locale}/geo`}
+                    href={`/${locale}/${getSlug('web-solutions', locale)}`}
                     className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
                     onClick={() => setIsOpen(false)}
                   >
-                    → GEO Optimization
+                    → {t('webSolutions')}
                   </Link>
                   <Link
-                    href={`/${locale}/seo`}
+                    href={`/${locale}/${getSlug('seo', locale)}`}
                     className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
                     onClick={() => setIsOpen(false)}
                   >
-                    → SEO
-                  </Link>
-                  <Link
-                    href={`/${locale}/web-development`}
-                    className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    → Web Development
-                  </Link>
-                  <Link
-                    href={`/${locale}/ecommerce`}
-                    className="block py-2 text-gray-400 hover:text-[#43ffae] transition-colors text-sm"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    → E-commerce
+                    → {t('seoServices')}
                   </Link>
                 </div>
               )}
             </div>
 
             <Link
-              href={`/${locale}/about`}
+              href={`/${locale}/${getSlug('about', locale)}`}
               className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
@@ -188,7 +187,7 @@ export default function Navigation() {
             </Link>
 
             <Link
-              href={`/${locale}/blog`}
+              href={`/${locale}/${getSlug('blog', locale)}`}
               className="block py-2 text-gray-300 hover:text-[#43ffae] transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
@@ -196,12 +195,32 @@ export default function Navigation() {
             </Link>
 
             <Link
-              href={`/${locale}/contact`}
+              href={`/${locale}/${getSlug('contact', locale)}`}
               className="block text-center bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-white px-6 py-3 rounded-full hover:shadow-xl hover:shadow-[#13aff0]/30 transition-all font-semibold mt-4"
               onClick={() => setIsOpen(false)}
             >
               {t('contact')}
             </Link>
+
+            {/* Mobile language switcher */}
+            <div className="flex items-center gap-2 pt-2">
+              <span className="text-gray-600 text-xs">Language:</span>
+              <div className="flex items-center gap-1 bg-[#171717] border border-gray-800 rounded-full p-1">
+                {['lt', 'en'].map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => { switchLocale(lang); setIsOpen(false); }}
+                    className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
+                      locale === lang
+                        ? 'bg-gradient-to-r from-[#13aff0] to-[#43ffae] text-[#171717]'
+                        : 'text-gray-500 hover:text-white'
+                    }`}
+                  >
+                    {lang}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>

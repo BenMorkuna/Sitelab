@@ -9,7 +9,7 @@ export default function Ecommerce() {
   const locale = useLocale();
 
   useEffect(() => {
-    router.replace(`/${locale}/web-development`);
+    router.replace(`/${locale}/web-solutions`);
   }, [router, locale]);
 
   return null;

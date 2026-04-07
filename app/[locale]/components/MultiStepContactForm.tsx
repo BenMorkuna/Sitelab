@@ -1,6 +1,38 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLocale } from 'next-intl';
+
+const tr = {
+  en: {
+    name: 'Your Name', email: 'Email Address', phone: 'Phone Number',
+    service: 'Select Service', chooseService: 'Choose a service...', company: 'Company Name',
+    companyPlaceholder: 'Your Company (optional)', details: 'Additional Details (Optional)',
+    detailsPlaceholder: 'Any specific requirements or questions...',
+    send: 'Send Message', sending: 'Sending...', selectAlert: 'Please select a service',
+    errorAlert: 'There was an error sending your message. Please try again or email us directly at info@sitelab.lt',
+    thankYou: 'Thank You!', thankYouMsg: "We've received your project details and will get back to you within 24 hours.",
+    submitAnother: 'Submit Another Request', footer: 'We typically respond within 24 hours. Your information is kept confidential.',
+    services: [
+      { value: 'seo-geo', label: 'SEO / GEO Services' },
+      { value: 'webdev', label: 'Web Development' }, { value: 'ecommerce', label: 'E-commerce Development' },
+    ],
+  },
+  lt: {
+    name: 'Jūsų vardas', email: 'El. pašto adresas', phone: 'Telefono numeris',
+    service: 'Pasirinkite paslaugą', chooseService: 'Pasirinkite...', company: 'Įmonės pavadinimas',
+    companyPlaceholder: 'Jūsų įmonė (neprivaloma)', details: 'Papildoma informacija (neprivaloma)',
+    detailsPlaceholder: 'Kokie jūsų reikalavimai ar klausimai...',
+    send: 'Siųsti žinutę', sending: 'Siunčiama...', selectAlert: 'Pasirinkite paslaugą',
+    errorAlert: 'Klaida siunčiant žinutę. Bandykite dar kartą arba rašykite info@sitelab.lt',
+    thankYou: 'Ačiū!', thankYouMsg: 'Gavome jūsų projekto informaciją ir susisieksime per 24 valandas.',
+    submitAnother: 'Pateikti kitą užklausą', footer: 'Paprastai atsakome per 24 valandas. Jūsų informacija yra konfidenciali.',
+    services: [
+      { value: 'seo-geo', label: 'SEO / GEO Paslaugos' },
+      { value: 'webdev', label: 'Svetainių kūrimas' }, { value: 'ecommerce', label: 'El. parduotuvių kūrimas' },
+    ],
+  },
+};
 
 interface FormData {
   service: string;
@@ -23,6 +55,8 @@ declare global {
 }
 
 export default function MultiStepContactForm() {
+  const locale = useLocale();
+  const t = locale === 'lt' ? tr.lt : tr.en;
   const [formData, setFormData] = useState<FormData>({
     service: '',
     name: '',
@@ -50,12 +84,7 @@ export default function MultiStepContactForm() {
     };
   }, []);
 
-  const services = [
-    { value: 'geo', label: 'GEO Services' },
-    { value: 'seo', label: 'SEO Services' },
-    { value: 'webdev', label: 'Web Development' },
-    { value: 'ecommerce', label: 'E-commerce Development' },
-  ];
+  const services = t.services;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +102,7 @@ export default function MultiStepContactForm() {
     }
 
     if (!formData.service) {
-      alert('Please select a service');
+      alert(t.selectAlert);
       return;
     }
 
@@ -116,7 +145,7 @@ export default function MultiStepContactForm() {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error sending your message. Please try again or email us directly at info@sitelab.lt');
+      alert(t.errorAlert);
     } finally {
       setIsSubmitting(false);
     }
@@ -130,10 +159,8 @@ export default function MultiStepContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-white mb-3">Thank You!</h3>
-        <p className="text-gray-400 mb-6">
-          We've received your project details and will get back to you within 24 hours.
-        </p>
+        <h3 className="text-2xl font-bold text-white mb-3">{t.thankYou}</h3>
+        <p className="text-gray-400 mb-6">{t.thankYouMsg}</p>
         <button
           onClick={() => {
             setIsSubmitted(false);
@@ -149,7 +176,7 @@ export default function MultiStepContactForm() {
           }}
           className="text-[#13aff0] hover:text-[#43ffae] transition-colors font-medium"
         >
-          Submit Another Request
+          {t.submitAnother}
         </button>
       </div>
     );
@@ -160,7 +187,7 @@ export default function MultiStepContactForm() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
               <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2">
-                Your Name *
+                {t.name} *
               </label>
               <input
                 type="text"
@@ -176,7 +203,7 @@ export default function MultiStepContactForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2">
-                  Email Address *
+                  {t.email} *
                 </label>
                 <input
                   type="email"
@@ -191,7 +218,7 @@ export default function MultiStepContactForm() {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-2">
-                  Phone Number *
+                  {t.phone} *
                 </label>
                 <input
                   type="tel"
@@ -208,7 +235,7 @@ export default function MultiStepContactForm() {
             {/* Service Selection Dropdown */}
             <div>
               <label htmlFor="service" className="block text-sm font-semibold text-gray-300 mb-2">
-                Select Service *
+                {t.service} *
               </label>
               <select
                 id="service"
@@ -217,7 +244,7 @@ export default function MultiStepContactForm() {
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-[#171717] border border-gray-700 text-white focus:border-[#13aff0] focus:ring-2 focus:ring-[#13aff0]/20 transition-all outline-none cursor-pointer"
               >
-                <option value="" disabled>Choose a service...</option>
+                <option value="" disabled>{t.chooseService}</option>
                 {services.map((service) => (
                   <option key={service.value} value={service.value}>
                     {service.label}
@@ -228,7 +255,7 @@ export default function MultiStepContactForm() {
 
             <div>
               <label htmlFor="company" className="block text-sm font-semibold text-gray-300 mb-2">
-                Company Name
+                {t.company}
               </label>
               <input
                 type="text"
@@ -236,7 +263,7 @@ export default function MultiStepContactForm() {
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-[#171717] border border-gray-700 text-white focus:border-[#13aff0] focus:ring-2 focus:ring-[#13aff0]/20 transition-all outline-none"
-                placeholder="Your Company (optional)"
+                placeholder={t.companyPlaceholder}
               />
             </div>
 
@@ -256,7 +283,7 @@ export default function MultiStepContactForm() {
 
             <div>
               <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2">
-                Additional Details (Optional)
+                {t.details}
               </label>
               <textarea
                 id="message"
@@ -264,7 +291,7 @@ export default function MultiStepContactForm() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={4}
                 className="w-full px-4 py-3 rounded-lg bg-[#171717] border border-gray-700 text-white focus:border-[#13aff0] focus:ring-2 focus:ring-[#13aff0]/20 transition-all outline-none resize-none"
-                placeholder="Any specific requirements or questions..."
+                placeholder={t.detailsPlaceholder}
               />
             </div>
 
@@ -279,15 +306,15 @@ export default function MultiStepContactForm() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Sending...
+              {t.sending}
             </span>
           ) : (
-            'Send Message'
+            t.send
           )}
         </button>
 
         <p className="text-sm text-gray-500 text-center">
-          We typically respond within 24 hours. Your information is kept confidential.
+          {t.footer}
         </p>
       </form>
     </div>

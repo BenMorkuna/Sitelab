@@ -43,3 +43,14 @@ h1, h2, h3, h4, h5, h6 {
 .animate-fadeIn {
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+@keyframes bgScroll {
+  0%   { background-position: center top; }
+  40%  { background-position: center bottom; }
+  60%  { background-position: center bottom; }
+  100% { background-position: center top; }
+}
+
+.animate-bg-scroll {
+  animation: bgScroll 25s ease-in-out infinite;
+}
