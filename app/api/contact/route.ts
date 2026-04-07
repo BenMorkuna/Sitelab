@@ -80,13 +80,12 @@ function sanitizeInput(input: string): string {
 }
 
 async function verifyRecaptcha(token: string): Promise<{ success: boolean; score?: number; error?: string }> {
-  if (!token) {
-    return { success: false, error: 'No reCAPTCHA token provided' };
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    return { success: true, score: 1.0 }; // Skip if not configured
   }
 
-  if (!process.env.RECAPTCHA_SECRET_KEY) {
-    console.warn('RECAPTCHA_SECRET_KEY not configured - skipping verification');
-    return { success: true, score: 1.0 }; // Allow if not configured
+  if (!token) {
+    return { success: false, error: 'No reCAPTCHA token provided' };
   }
 
   try {
