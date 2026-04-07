@@ -264,7 +264,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'SiteLab Contact Form <noreply@sitelab.lt>',
+      from: 'SiteLab Contact Form <onboarding@resend.dev>',
       to: ['info@sitelab.lt'],
       replyTo: email,
       subject: `🎯 New Contact Form: ${sanitizedName} - ${serviceDisplay}`,
