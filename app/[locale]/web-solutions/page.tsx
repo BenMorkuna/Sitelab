@@ -306,7 +306,7 @@ export default function WebDevelopment() {
                   {[
                     { stat: 'Next.js', label: t.statsLabels[0] },
                     { stat: '< 1s', label: t.statsLabels[1] },
-                    { stat: '3 wks', label: t.statsLabels[2] },
+                    { stat: '3 weeks', label: t.statsLabels[2] },
                   ].map((item, i) => (
                     <div key={i} className="text-center px-4 py-3 rounded-xl bg-[#171717] border border-gray-800 flex-1">
                       <div className="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#13aff0] to-[#43ffae]">
